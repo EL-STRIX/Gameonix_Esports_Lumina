@@ -7,6 +7,8 @@ $(document).ready(function() {
         if (book) {
             renderBookDetails(book);
             setupDownload(book);
+            renderRelatedBooks(book, books);
+            setupReviews(book.id);
         }
     });
 });
@@ -96,3 +98,100 @@ function setupDownload(book) {
     });
 }
 
+function renderRelatedBooks(book, allBooks) {
+    if (!book.relatedBookIds || book.relatedBookIds.length === 0) return;
+    
+    let relatedBooks = allBooks.filter(b => book.relatedBookIds.includes(b.id));
+    if (relatedBooks.length === 0) return;
+
+    let html = '<h2 class="font-headline-md text-on-background mb-4">Related Books</h2><div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">';
+    
+    relatedBooks.forEach(rBook => {
+        const badge = rBook.isPremiumRequired 
+            ? '<span class="position-absolute top-0 end-0 m-2 bg-tertiary text-on-tertiary px-2 py-1 rounded-pill font-label-sm">Premium</span>' 
+            : '';
+        
+        html += `
+            <div class="col">
+                <a href="book-details.html?id=${rBook.id}" class="text-decoration-none">
+                    <div class="bg-surface-container-low rounded-xl p-3 h-100 border border-surface-variant hover-bg-surface-container transition-all book-card-shadow cursor-pointer position-relative d-flex flex-column group">
+                        ${badge}
+                        <div class="aspect-1-1-5 w-100 rounded-lg overflow-hidden mb-3 bg-surface-container">
+                            <img class="w-100 h-100 object-cover group-hover-scale transition-transform" src="../${rBook.coverImage}" alt="${rBook.title}">
+                        </div>
+                        <div class="d-flex flex-column flex-grow-1">
+                            <h3 class="font-headline-sm text-on-surface m-0 mb-1 text-truncate">${rBook.title}</h3>
+                            <p class="font-label-md text-on-surface-variant m-0 mb-2">${rBook.author}</p>
+                            <div class="mt-auto d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="material-symbols-outlined text-primary icon-16 icon-fill-1 me-1">star</span>
+                                    <span class="font-label-md text-on-surface fw-bold">${rBook.rating}</span>
+                                </div>
+                                <span class="font-body-md text-primary fw-bold">$${rBook.price}</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        `;
+    });
+    
+    html += '</div>';
+    $('#relatedBooksSection').html(html);
+}
+
+function setupReviews(bookId) {
+    const html = `
+      <section class="pt-section-padding border-top border-surface-variant">
+        <h2 class="font-headline-md text-on-background mb-5 text-center">Reader Reviews</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="bg-surface-container-low p-4 rounded-lg mb-5 border border-surface-variant">
+                    <h4 class="font-headline-sm mb-3">Leave a Review</h4>
+                    <form id="reviewForm">
+                        <select class="form-select mb-3 bg-surface-container-lowest" id="reviewRating" required>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                        <textarea class="form-control mb-3 bg-surface-container-lowest" id="reviewText" required rows="3" placeholder="Share your thoughts..."></textarea>
+                        <button type="submit" class="btn bg-primary text-on-primary rounded-pill px-4 hover-bg-primary-container">Submit Review</button>
+                    </form>
+                </div>
+                <div id="reviewsList" class="d-flex flex-column gap-3"></div>
+            </div>
+        </div>
+      </section>
+    `;
+    $('#reviewsSection').html(html);
+    
+    const storageKey = 'reviews_' + bookId;
+    function loadReviews() {
+        const reviews = JSON.parse(localStorage.getItem(storageKey)) || [];
+        let rHtml = '';
+        reviews.reverse().forEach(r => {
+            rHtml += `
+            <div class="bg-surface-container-lowest border border-surface-variant p-4 rounded-lg">
+                <div class="d-flex align-items-center mb-2">
+                    <span class="font-label-md fw-bold me-2">${r.rating}.0</span>
+                    <span class="material-symbols-outlined text-primary icon-16 icon-fill-1">star</span>
+                </div>
+                <p class="font-body-md text-on-surface-variant m-0">${r.text}</p>
+            </div>
+            `;
+        });
+        $('#reviewsList').html(rHtml);
+    }
+    
+    $('#reviewForm').on('submit', function(e) {
+        e.preventDefault();
+        const reviews = JSON.parse(localStorage.getItem(storageKey)) || [];
+        reviews.push({ rating: $('#reviewRating').val(), text: $('#reviewText').val() });
+        localStorage.setItem(storageKey, JSON.stringify(reviews));
+        $('#reviewText').val('');
+        loadReviews();
+    });
+    loadReviews();
+}

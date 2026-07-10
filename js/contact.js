@@ -1,27 +1,17 @@
-// contact.js - Contact form submission logic
+// contact.js
 
 $(document).ready(function() {
     $('#contactForm').on('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // Prevent page reload
         
-        // Form is natively validated by HTML5 'required' attributes before this triggers
+        // Validation is handled by HTML5 'required' attributes.
+        // If we reach here, the form is valid.
         
-        const name = $('#contactName').val();
+        const toastEl = $('#contactToast');
+        const toast = new bootstrap.Toast(toastEl[0]);
+        toast.show();
         
-        // Mock sending message
-        const btn = $(this).find('button[type="submit"]');
-        const originalText = btn.text();
-        btn.prop('disabled', true).text('Sending...');
-        
-        setTimeout(() => {
-            btn.prop('disabled', false).text(originalText);
-            
-            // Clear form
-            this.reset();
-            
-            // Show toast
-            GlobalApp.showToast("Message Sent", `Thank you ${name}, we have received your message and will get back to you soon.`, true);
-        }, 1200);
+        // Reset the form after sending
+        $('#contactForm')[0].reset();
     });
 });
-
