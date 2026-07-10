@@ -1,223 +1,154 @@
-// details.js - Book Details, Reviews, and Download Logic
-
 $(document).ready(function() {
     const params = new URLSearchParams(window.location.search);
     const bookId = parseInt(params.get('id'));
-    
-    if (!bookId) {
-        window.location.href = '../index.html';
-        return;
-    }
 
     $.getJSON('../data/books.json', function(books) {
-        const book = books.find(b => b.id === bookId);
+        const book = books.find(b => b.id === (bookId || 1));
         if (book) {
             renderBookDetails(book);
             setupDownload(book);
-            setupReviews(bookId);
-            renderRelatedBooks(book, books);
-        } else {
-            $('#detailsContainer').html('<div class="alert alert-danger mt-5">Book not found!</div>');
+            setupReviews(book.id);
         }
-    }).fail(function() {
-        $('#detailsContainer').html('<div class="alert alert-danger mt-5">Failed to load book data!</div>');
     });
 });
 
 function renderBookDetails(book) {
-    const premiumBadge = book.isPremiumRequired ? `<span class="badge bg-warning text-dark"><span class="material-symbols-outlined fs-6 align-middle">star</span> Premium Ebook</span>` : `<span class="badge bg-success">Free Download</span>`;
-    
-    let advHtml = book.advantages.map(a => `<li><span class="text-success">✓</span> ${a}</li>`).join('');
-    let disadvHtml = book.disadvantages.map(d => `<li><span class="text-danger">✗</span> ${d}</li>`).join('');
+    const advHtml = book.advantages.map(a => <li class="d-flex align-items-start font-body-md text-on-surface-variant mb-2"><span class="material-symbols-outlined text-tertiary me-2" style="font-size: 20px;">check_circle</span> + a + </li>).join('');
+    const disadvHtml = book.disadvantages.map(d => <li class="d-flex align-items-start font-body-md text-on-surface-variant mb-2"><span class="material-symbols-outlined text-outline-variant me-2" style="font-size: 20px;">info</span> + d + </li>).join('');
 
-    const html = `
-        <div class="row mb-5 mt-4">
-            <div class="col-md-4 text-center mb-4">
-                <img src="../${book.coverImage}" class="img-fluid rounded shadow" alt="${book.title}" style="max-height: 500px;">
-            </div>
-            <div class="col-md-8">
-                <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h1 class="display-5 fw-bold mb-0">${book.title}</h1>
-                    ${premiumBadge}
-                </div>
-                <h4 class="text-muted mb-3">By ${book.author}</h4>
-                
-                <div class="d-flex align-items-center mb-4">
-                    <div class="me-3">${generateStarsDetails(book.rating)}</div>
-                    <span class="fw-bold fs-5 text-primary">$${book.price}</span>
-                </div>
-                
-                <div class="card bg-light border-0 mb-4">
-                    <div class="card-body">
-                        <div class="row text-center">
-                            <div class="col-4 border-end"><strong>Pages</strong><br>${book.pages}</div>
-                            <div class="col-4 border-end"><strong>Published</strong><br>${book.publishedYear}</div>
-                            <div class="col-4"><strong>Language</strong><br>${book.language}</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <h5 class="fw-bold">Summary</h5>
-                <p class="lead" style="font-size: 1.1rem;">${book.summary}</p>
-                
-                <div class="row mt-4">
-                    <div class="col-md-6 mb-3">
-                        <h6 class="fw-bold">Highlights</h6>
-                        <ul class="list-unstyled">${advHtml}</ul>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <h6 class="fw-bold">Considerations</h6>
-                        <ul class="list-unstyled">${disadvHtml}</ul>
-                    </div>
-                </div>
-                
-                <hr class="my-4">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button id="downloadBtn" class="btn btn-primary btn-lg px-5 shadow-sm">
-                        <span class="material-symbols-outlined align-middle me-2">download</span> Download Ebook
-                    </button>
-                </div>
-                
-                <p class="text-muted small mt-4">
-                    ISBN: ${book.isbn} | Publisher: ${book.publisher} | Genre: ${book.genre}
-                </p>
-            </div>
+    const html = \
+      <section class="row g-4 mb-5">
+        <div class="col-md-4 col-lg-3">
+          <div class="aspect-1-1-5 w-100 rounded-lg overflow-hidden book-card-shadow position-relative bg-surface-container">
+            <img class="w-100 h-100 object-cover" src="../\" alt="\" />
+          </div>
+          <button id="downloadBtn" class="btn bg-primary text-on-primary w-100 mt-4 font-label-md rounded-lg py-2 d-flex align-items-center justify-content-center gap-2 hover-bg-primary-container">
+            <span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+            Download E-Book
+          </button>
         </div>
-        
-        <hr class="my-5">
-        
-        <div class="row mb-5">
-            <div class="col-md-8 mx-auto">
-                <h3 class="mb-4 text-center">Reader Reviews</h3>
-                <div class="card shadow-sm border-0 mb-5">
-                    <div class="card-body p-4">
-                        <h5 class="mb-3">Leave a Review</h5>
-                        <form id="reviewForm">
-                            <div class="mb-3">
-                                <label class="form-label">Rating (1-5)</label>
-                                <select class="form-select" id="reviewRating" required>
-                                    <option value="5">5 - Excellent</option>
-                                    <option value="4">4 - Very Good</option>
-                                    <option value="3">3 - Average</option>
-                                    <option value="2">2 - Poor</option>
-                                    <option value="1">1 - Terrible</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Your Review</label>
-                                <textarea class="form-control" id="reviewText" rows="3" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-dark">Submit Review</button>
-                        </form>
-                    </div>
-                </div>
-                <div id="reviewsList"></div>
+        <div class="col-md-8 col-lg-9 d-flex flex-column justify-content-start">
+          <div class="mb-5">
+            <span class="d-inline-block bg-secondary-fixed text-primary px-3 py-1 rounded-pill font-label-sm mb-3">\</span>
+            <h1 class="font-display-lg text-on-background mb-2">\</h1>
+            <p class="font-headline-sm text-on-surface-variant m-0">by <span class="text-primary cursor-pointer">\</span></p>
+          </div>
+          <div class="row row-cols-2 row-cols-sm-3 g-3 bg-surface-container-low p-4 rounded-lg border border-surface-variant mb-5 mx-0">
+            <div class="col">
+              <p class="font-label-sm text-outline m-0 mb-1">ISBN</p>
+              <p class="font-body-md text-on-surface m-0">\</p>
             </div>
+            <div class="col">
+              <p class="font-label-sm text-outline m-0 mb-1">Language</p>
+              <p class="font-body-md text-on-surface m-0">\</p>
+            </div>
+            <div class="col">
+              <p class="font-label-sm text-outline m-0 mb-1">Publisher</p>
+              <p class="font-body-md text-on-surface m-0">\</p>
+            </div>
+            <div class="col">
+              <p class="font-label-sm text-outline m-0 mb-1">Pages</p>
+              <p class="font-body-md text-on-surface m-0">\</p>
+            </div>
+            <div class="col">
+              <p class="font-label-sm text-outline m-0 mb-1">Year</p>
+              <p class="font-body-md text-on-surface m-0">\</p>
+            </div>
+            <div class="col">
+              <p class="font-label-sm text-outline m-0 mb-1">Price</p>
+              <p class="font-body-md text-primary fw-bold m-0">$\</p>
+            </div>
+          </div>
+          <div class="mb-5">
+            <h2 class="font-headline-md text-on-background mb-3">Summary</h2>
+            <p class="font-body-lg text-on-surface-variant text-justify" style="line-height: 1.8;">\</p>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-4 h-100">
+                <h3 class="font-headline-sm text-on-background mb-3">Strengths</h3>
+                <ul class="list-unstyled m-0">\</ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-surface-container-lowest border border-surface-variant rounded-lg p-4 h-100">
+                <h3 class="font-headline-sm text-on-background mb-3">Considerations</h3>
+                <ul class="list-unstyled m-0">\</ul>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div class="row mb-5" id="relatedSection">
-            <div class="col-12"><h3 class="mb-4">Related Books</h3></div>
-            <div class="row g-4" id="relatedGrid"></div>
-        </div>
-    `;
-    
-    $('#detailsContainer').html(html);
-}
-
-function generateStarsDetails(rating) {
-    let stars = '';
-    const full = Math.floor(rating);
-    for(let i=1; i<=5; i++) {
-        stars += `<span class="material-symbols-outlined text-warning" style="font-variation-settings: 'FILL' ${i <= full ? '1' : '0'}">star</span>`;
-    }
-    return stars;
+      </section>
+    \;
+    $('#bookDetailsContainer').html(html);
 }
 
 function setupDownload(book) {
     $('#downloadBtn').on('click', function() {
         if (book.isPremiumRequired) {
-            if (GlobalApp.isPremium()) {
-                GlobalApp.showToast("Success", "Download started! Thank you for being a premium member.", true);
-                // Simulate download
-                setTimeout(() => window.open(`../${book.coverImage}`, '_blank'), 1000); 
+            if (sessionStorage.getItem('premium') === 'true') {
+                alert("Download started!");
             } else {
-                GlobalApp.showToast("Premium Required", "This book requires a premium subscription.", false);
-                setTimeout(() => window.location.href = 'premium.html', 1500);
+                window.location.href = 'premium.html';
             }
         } else {
-            GlobalApp.showToast("Success", "Download started! Enjoy your free ebook.", true);
-            setTimeout(() => window.open(`../${book.coverImage}`, '_blank'), 1000);
+            alert("Download started!");
         }
     });
 }
 
 function setupReviews(bookId) {
-    const storageKey = `reviews_${bookId}`;
+    const html = \
+      <section class="pt-section-padding border-top border-surface-variant">
+        <h2 class="font-headline-md text-on-background mb-5 text-center">Reader Reviews</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="bg-surface-container-low p-4 rounded-lg mb-5 border border-surface-variant">
+                    <h4 class="font-headline-sm mb-3">Leave a Review</h4>
+                    <form id="reviewForm">
+                        <select class="form-select mb-3 bg-surface-container-lowest" id="reviewRating" required>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                        <textarea class="form-control mb-3 bg-surface-container-lowest" id="reviewText" required rows="3" placeholder="Share your thoughts..."></textarea>
+                        <button type="submit" class="btn bg-primary text-on-primary rounded-pill px-4 hover-bg-primary-container">Submit Review</button>
+                    </form>
+                </div>
+                <div id="reviewsList" class="d-flex flex-column gap-3"></div>
+            </div>
+        </div>
+      </section>
+    \;
+    $('#reviewsSection').html(html);
     
+    const storageKey = 'reviews_' + bookId;
     function loadReviews() {
         const reviews = JSON.parse(localStorage.getItem(storageKey)) || [];
-        let html = '';
-        if (reviews.length === 0) {
-            html = '<p class="text-muted text-center">No reviews yet. Be the first!</p>';
-        } else {
-            reviews.reverse().forEach(r => {
-                html += `
-                    <div class="card border-0 shadow-sm mb-3">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between mb-2">
-                                <strong>Anonymous Reader</strong>
-                                <span>${generateStarsDetails(r.rating)}</span>
-                            </div>
-                            <p class="mb-0 text-muted">${r.text}</p>
-                            <small class="text-muted mt-2 d-block">${new Date(r.date).toLocaleDateString()}</small>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-        $('#reviewsList').html(html);
+        let rHtml = '';
+        reviews.reverse().forEach(r => {
+            rHtml += \
+            <div class="bg-surface-container-lowest border border-surface-variant p-4 rounded-lg">
+                <div class="d-flex align-items-center mb-2">
+                    <span class="font-label-md fw-bold me-2">\.0</span>
+                    <span class="material-symbols-outlined text-primary" style="font-size: 16px; font-variation-settings: 'FILL' 1;">star</span>
+                </div>
+                <p class="font-body-md text-on-surface-variant m-0">\</p>
+            </div>
+            \;
+        });
+        $('#reviewsList').html(rHtml);
     }
     
     $('#reviewForm').on('submit', function(e) {
         e.preventDefault();
-        const rating = parseInt($('#reviewRating').val());
-        const text = $('#reviewText').val().trim();
-        
-        if (text) {
-            const reviews = JSON.parse(localStorage.getItem(storageKey)) || [];
-            reviews.push({ rating, text, date: new Date().toISOString() });
-            localStorage.setItem(storageKey, JSON.stringify(reviews));
-            
-            $('#reviewText').val('');
-            $('#reviewRating').val('5');
-            loadReviews();
-            GlobalApp.showToast("Success", "Your review has been posted!", true);
-        }
+        const reviews = JSON.parse(localStorage.getItem(storageKey)) || [];
+        reviews.push({ rating: $('#reviewRating').val(), text: $('#reviewText').val() });
+        localStorage.setItem(storageKey, JSON.stringify(reviews));
+        $('#reviewText').val('');
+        loadReviews();
     });
-    
     loadReviews();
-}
-
-function renderRelatedBooks(book, allBooks) {
-    if (!book.relatedBookIds || book.relatedBookIds.length === 0) {
-        $('#relatedSection').hide();
-        return;
-    }
-    
-    const related = allBooks.filter(b => book.relatedBookIds.includes(b.id));
-    let html = '';
-    related.forEach(b => {
-        html += `
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="../${b.coverImage}" class="card-img-top p-3" alt="${b.title}" style="height:200px; object-fit:contain;">
-                    <div class="card-body text-center">
-                        <h6 class="card-title text-truncate" title="${b.title}">${b.title}</h6>
-                        <a href="book-details.html?id=${b.id}" class="btn btn-sm btn-outline-secondary mt-2">View</a>
-                    </div>
-                </div>
-            </div>
-        `;
-    });
-    $('#relatedGrid').html(html);
 }

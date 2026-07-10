@@ -1,8 +1,4 @@
-// books.js - Handles Books Catalog & Featured Books
-
 let booksData = [];
-
-// Determine root
 let isRootPage = true;
 $('script').each(function() {
     if ($(this).attr('src') && $(this).attr('src').includes('../js/books.js')) {
@@ -17,52 +13,61 @@ const rootPrefix = isRootPage ? '' : '../';
 function loadBooks(isHome) {
     $.getJSON(dataUrl, function(data) {
         booksData = data;
-        
         if (isHome) {
             renderFeatured(data);
         } else {
-            populateGenres(data);
-            handleSearchParams();
             renderCatalog(data);
-            setupFilters();
         }
-    }).fail(function() {
-        console.error("Error loading books.json");
-        GlobalApp.showToast("Error", "Failed to load book data.", false);
     });
-}
-
-function generateStars(rating) {
-    let stars = '';
-    const full = Math.floor(rating);
-    for(let i=1; i<=5; i++) {
-        stars += `<span class="material-symbols-outlined text-warning" style="font-size:16px; font-variation-settings: 'FILL' ${i <= full ? '1' : '0'}">star</span>`;
-    }
-    return stars;
 }
 
 function renderFeatured(books) {
     const featured = books.filter(b => b.featured).slice(0, 4);
-    let html = '';
+    if (featured.length < 4) return;
     
-    featured.forEach(b => {
-        html += `
-            <div class="col-md-3 col-sm-6 mb-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="${rootPrefix}${b.coverImage}" class="card-img-top p-3" alt="${b.title}" style="height:250px; object-fit:contain;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-truncate" title="${b.title}">${b.title}</h5>
-                        <p class="card-text text-muted small mb-2">${b.author}</p>
-                        <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <span class="text-primary fw-bold">$${b.price}</span>
-                            <a href="${pagesPath}book-details.html?id=${b.id}" class="btn btn-sm btn-outline-primary">Details</a>
-                        </div>
-                    </div>
+    const largeBook = featured[0];
+    const smallBooks = featured.slice(1, 4);
+
+    let html = \
+    <!-- Large Feature Card -->
+    <div class="col-md-8">
+        <div class="bg-surface rounded-xl overflow-hidden book-card-shadow d-flex flex-column flex-md-row cursor-pointer h-100" onclick="window.location.href='\book-details.html?id=\'">
+            <div class="w-100 w-md-50 aspect-1-1-2">
+                <img class="w-100 h-100 object-cover" src="\\" alt="\"/>
+            </div>
+            <div class="w-100 w-md-50 p-4 d-flex flex-column justify-content-center bg-surface">
+                <span class="d-inline-flex px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-pill mb-3" style="width: max-content;">Editor's Choice</span>
+                <h3 class="font-headline-sm text-on-background mb-2">\</h3>
+                <p class="font-label-md text-on-surface-variant mb-3">by \</p>
+                <p class="font-body-md text-on-surface-variant line-clamp-3 mb-3">\</p>
+                <button class="btn bg-secondary-fixed text-primary font-label-md rounded-pill px-4 py-2 hover-bg-primary-container" style="width: max-content;">Read Extract</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Small Feature Cards Grid -->
+    <div class="col-md-4">
+        <div class="d-flex flex-column gap-4 h-100">
+    \;
+
+    smallBooks.forEach(b => {
+        html += \
+        <div class="bg-surface rounded-xl p-3 book-card-shadow d-flex align-items-center gap-3 cursor-pointer flex-grow-1" onclick="window.location.href='\book-details.html?id=\'">
+            <div class="aspect-1-1-5 rounded-lg overflow-hidden flex-shrink-0" style="width: 72px;">
+                <img class="w-100 h-100 object-cover" src="\\" alt="\"/>
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+                <h4 class="font-label-md fw-bold text-on-background line-clamp-2 m-0 mb-1">\</h4>
+                <p class="font-label-sm text-on-surface-variant m-0 mb-2">by \</p>
+                <div class="d-flex align-items-center text-primary font-label-sm">
+                    <span class="material-symbols-outlined me-1" style="font-size: 16px; font-variation-settings: 'FILL' 1;">star</span> \
                 </div>
             </div>
-        `;
+        </div>
+        \;
     });
-    
+
+    html += \</div></div>\;
     $('#featuredGrid').html(html);
 }
 
@@ -70,83 +75,39 @@ function renderCatalog(books) {
     const container = $('#catalogGrid');
     container.empty();
     
-    if (books.length === 0) {
-        container.html('<div class="col-12"><div class="alert alert-info">No books found matching your criteria.</div></div>');
-        return;
-    }
-    
     books.forEach(b => {
-        const premiumBadge = b.isPremiumRequired ? `<span class="badge bg-warning position-absolute top-0 end-0 m-2"><span class="material-symbols-outlined fs-6 align-middle">star</span> Premium</span>` : '';
+        let badge = b.bestseller ? '<div class="position-absolute top-0 start-0 m-2 bg-secondary-container text-on-secondary-container px-2 py-1 rounded font-label-sm text-uppercase">Bestseller</div>' : '';
+        if (b.featured && !b.bestseller) {
+            badge = '<div class="position-absolute top-0 start-0 m-2 bg-primary text-on-primary px-2 py-1 rounded font-label-sm text-uppercase">Featured</div>';
+        }
         
-        const card = `
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="card h-100 shadow-sm border-0 position-relative">
-                    ${premiumBadge}
-                    <img src="${rootPrefix}${b.coverImage}" class="card-img-top p-3" alt="${b.title}" style="height:280px; object-fit:contain;">
-                    <div class="card-body d-flex flex-column">
-                        <span class="badge bg-secondary mb-2 align-self-start">${b.genre}</span>
-                        <h5 class="card-title text-truncate" title="${b.title}">${b.title}</h5>
-                        <p class="card-text text-muted small mb-2">By ${b.author}</p>
-                        <div class="mb-3">${generateStars(b.rating)} <small class="text-muted">(${b.rating})</small></div>
-                        <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <span class="text-primary fw-bold fs-5">$${b.price}</span>
-                            <a href="book-details.html?id=${b.id}" class="btn btn-primary btn-sm">View Details</a>
-                        </div>
+        const html = \
+        <div class="col">
+            <article class="bg-surface rounded-lg shadow-level-1 card-hover-lift d-flex flex-column h-100 overflow-hidden border border-surface-variant cursor-pointer" onclick="window.location.href='\book-details.html?id=\'">
+                <div class="position-relative w-100 bg-surface-container-low" style="padding-top: 150%;">
+                    <img class="position-absolute top-0 start-0 w-100 h-100 object-cover" src="\\" alt="\"/>
+                    \
+                </div>
+                <div class="p-3 d-flex flex-column flex-grow-1">
+                    <h3 class="font-headline-sm text-on-background mb-1 line-clamp-2">\</h3>
+                    <p class="font-body-md text-on-surface-variant mb-3">\</p>
+                    <div class="d-flex align-items-center gap-1 mt-auto">
+                        <span class="material-symbols-outlined text-surface-tint" style="font-size: 16px; font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="font-label-sm text-on-background">\</span>
+                        <span class="font-label-sm text-outline ms-1">(\)</span>
                     </div>
                 </div>
-            </div>
-        `;
-        container.append(card);
+            </article>
+        </div>
+        \;
+        container.append(html);
     });
 }
 
-function populateGenres(books) {
-    const genres = [...new Set(books.map(b => b.genre))].sort();
-    const select = $('#genreFilter');
-    genres.forEach(g => {
-        select.append(`<option value="${g}">${g}</option>`);
-    });
-}
-
-function handleSearchParams() {
-    const params = new URLSearchParams(window.location.search);
-    const q = params.get('q');
-    if (q) {
-        $('#navSearchInput').val(q);
-        // Will be filtered in setupFilters apply() automatically
+$(document).ready(function() {
+    if ($('#featuredGrid').length > 0) {
+        loadBooks(true);
+    } else if ($('#catalogGrid').length > 0) {
+        loadBooks(false);
     }
-}
-
-function setupFilters() {
-    function applyFilters() {
-        const genre = $('#genreFilter').val();
-        const sort = $('#sortFilter').val();
-        const search = $('#navSearchInput').val().toLowerCase().trim();
-        
-        let filtered = [...booksData];
-        
-        if (genre !== 'all') {
-            filtered = filtered.filter(b => b.genre === genre);
-        }
-        
-        if (search) {
-            filtered = filtered.filter(b => b.title.toLowerCase().includes(search) || b.author.toLowerCase().includes(search));
-        }
-        
-        if (sort === 'price-low') {
-            filtered.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-        } else if (sort === 'price-high') {
-            filtered.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-        } else if (sort === 'rating') {
-            filtered.sort((a, b) => b.rating - a.rating);
-        }
-        
-        renderCatalog(filtered);
-    }
-    
-    $('#genreFilter, #sortFilter').on('change', applyFilters);
-    $('#navSearchInput').on('keyup', applyFilters);
-    
-    // Initial apply for search params
-    applyFilters();
-}
+});

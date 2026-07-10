@@ -1,124 +1,156 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - LuminaBooks</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>LuminaBooks - Discover Your Next Great Read</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #212529; }
-        .navbar-brand { font-weight: 700; color: #6e3446 !important; }
-        .btn-primary { background-color: #6e3446; border-color: #6e3446; }
-        .btn-primary:hover { background-color: #562736; border-color: #562736; }
-        .card { transition: transform 0.2s, box-shadow 0.2s; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        html { scroll-behavior: smooth; }
-        .skeleton { background: #e9ecef; animation: pulse 1.5s infinite; border-radius: 4px; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-    </style>
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="d-flex flex-column min-vh-100">
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">LuminaBooks</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/books.html">Books</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
-                </ul>
-                <form class="d-flex me-3" id="navSearchForm">
-                    <input class="form-control me-2" type="search" placeholder="Search books..." id="navSearchInput">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </form>
-                <div id="premiumNavBadge">
-                    <a href="pages/premium.html" class="btn btn-warning fw-bold">Go Premium</a>
+<body class="bg-background text-on-surface font-body-md" style="padding-top: 64px;">
+    
+    <!-- TopNavBar -->
+    <nav class="fixed-top w-100 bg-surface" style="box-shadow: 0 1px 0 rgba(0,0,0,0.05); height: 64px;">
+        <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
+            <!-- Brand -->
+            <a href="index.html" class="font-headline-md text-primary fw-bold text-decoration-none">
+                LuminaBooks
+            </a>
+            <!-- Navigation Links -->
+            <div class="d-none d-md-flex align-items-center gap-4">
+                <a href="index.html" class="font-label-md text-primary fw-bold text-decoration-none border-bottom border-primary border-2 pb-1">Home</a>
+                <a href="pages/books.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Books</a>
+                <a href="pages/premium.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Premium</a>
+                <a href="pages/about.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">About</a>
+                <a href="pages/contact.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Contact</a>
+                <a href="pages/faq.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">FAQ</a>
+            </div>
+            <!-- Actions -->
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-none d-md-flex align-items-center bg-surface-container-lowest border rounded-pill px-3 py-1 me-2">
+                    <span class="material-symbols-outlined text-on-surface-variant me-2" style="font-size: 20px;">search</span>
+                    <input type="text" placeholder="Search books..." class="border-0 bg-transparent text-on-surface" style="outline: none; width: 120px;">
                 </div>
+                <button class="btn btn-link text-primary font-label-md text-decoration-none d-none d-md-block">Sign In</button>
+                <button class="btn bg-primary text-on-primary rounded-pill px-4 hover-bg-primary-container font-label-md d-none d-md-block">Get Started</button>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow-1 py-5">
-        
-        <div class='container'>
-            <div class='row align-items-center mb-5'>
-                <div class='col-md-6'>
-                    <h1 class='display-4 fw-bold text-primary mb-3' style='color: #6e3446 !important;'>Discover Your Next Great Read</h1>
-                    <p class='lead text-muted mb-4'>Explore our curated collection of classic literature. Join Premium for exclusive ebook downloads.</p>
-                    <a href='pages/books.html' class='btn btn-primary btn-lg'>Browse Catalog</a>
+    <main>
+        <!-- Hero Section -->
+        <section class="max-w-container-max mx-auto px-margin-mobile px-md-4 py-5 fade-in">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 d-flex flex-column gap-4">
+                    <h1 class="font-display-lg text-on-background m-0">Discover Your Next Great Read</h1>
+                    <p class="font-body-lg text-on-surface-variant m-0" style="max-width: 500px;">
+                        Immerse yourself in a curated collection of literary masterpieces. A quiet sanctuary for readers who seek effortless discovery and profound narratives.
+                    </p>
+                    <div class="pt-2">
+                        <a href="pages/books.html" class="btn bg-primary text-on-primary rounded-pill px-4 py-2 hover-bg-primary-container d-inline-flex align-items-center font-label-md shadow-sm">
+                            Browse Books
+                            <span class="material-symbols-outlined ms-2" style="font-size: 20px;">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
-                <div class='col-md-6 text-center'>
-                    <img src='assets/images/books/book1.svg' class='img-fluid rounded shadow' style='max-height: 400px;' alt='Hero'>
+                <div class="col-md-6 position-relative mt-4 mt-md-0">
+                    <div class="aspect-4-3 rounded-xl overflow-hidden book-card-shadow position-relative z-1">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3teCBaJQpd8Vjk4HaB8SKYWVGxYtvWHLkqx2rs03DJ3h-SRCHTYxCqQHPSTPYzlCsM7vpUMBFp30IGYJKzzLaMZ8UIczv2csLA7iHGM034HmpQRtreuXe3ST8nPKxt8X-ib6raL1u7JyG9hgP2Xqmch1QxjWlGmhBY7t5Suul36Hl0_SfuhBtzaIMH4GvEeP68qe3khdAxDf6ykCbpS-HslpRg3vdWcWgcpU3ik6N4f6weaTv-1y2O8eCBPm2x8h3SXyp6cAt068" class="w-100 h-100 object-cover" alt="Reading nook">
+                    </div>
+                    <div class="position-absolute bg-secondary-fixed rounded-circle" style="width: 12rem; height: 12rem; bottom: -1.5rem; right: -1.5rem; filter: blur(2rem); mix-blend-mode: multiply; opacity: 0.5; z-index: 0;"></div>
                 </div>
             </div>
-            <h2 class='mb-4'>Featured Books</h2>
-            <div class='row g-4' id='featuredGrid'>
-                <div class='col-12'><div class='skeleton' style='height: 200px;'></div></div>
+        </section>
+
+        <!-- Featured Books Section -->
+        <section class="bg-surface-container-low py-5 fade-in delay-100">
+            <div class="max-w-container-max mx-auto px-margin-mobile px-md-4">
+                <div class="d-flex justify-content-between align-items-end mb-4">
+                    <div>
+                        <h2 class="font-headline-md text-on-background mb-2">Featured Books</h2>
+                        <p class="font-body-md text-on-surface-variant m-0">Handpicked selections for your quiet moments.</p>
+                    </div>
+                    <a href="pages/books.html" class="font-label-md text-primary d-flex align-items-center text-decoration-none">
+                        View all <span class="material-symbols-outlined ms-1" style="font-size: 20px;">chevron_right</span>
+                    </a>
+                </div>
+                <!-- Dynamic Grid injected by books.js -->
+                <div class="row g-4" id="featuredGrid">
+                    <!-- Books will be injected here -->
+                </div>
             </div>
-        </div>
-    
+        </section>
+
+        <!-- Premium Banner -->
+        <section class="py-5 px-margin-mobile px-md-4 fade-in delay-200">
+            <div class="max-w-container-max mx-auto bg-surface-container-high rounded-xl overflow-hidden position-relative border border-outline-variant">
+                <div class="position-absolute top-0 bottom-0 start-0 end-0 opacity-25" style="background-image: radial-gradient(circle at right center, #6e3446 0%, transparent 50%); pointer-events: none;"></div>
+                <div class="position-relative p-4 p-md-5 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4">
+                    <div>
+                        <div class="d-inline-flex align-items-center gap-2 bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-pill mb-3">
+                            <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            <span class="font-label-sm">LuminaBooks Premium</span>
+                        </div>
+                        <h2 class="font-headline-md text-on-background mb-3">Elevate Your Reading Experience</h2>
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <li class="d-flex align-items-center font-body-md text-on-surface-variant">
+                                <span class="material-symbols-outlined text-primary me-3" style="font-size: 20px;">check_circle</span> Unlimited access to curated editorial collections.
+                            </li>
+                            <li class="d-flex align-items-center font-body-md text-on-surface-variant">
+                                <span class="material-symbols-outlined text-primary me-3" style="font-size: 20px;">check_circle</span> Distraction-free, ad-less reading environment.
+                            </li>
+                            <li class="d-flex align-items-center font-body-md text-on-surface-variant">
+                                <span class="material-symbols-outlined text-primary me-3" style="font-size: 20px;">check_circle</span> Early access to new releases and author interviews.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex flex-column flex-sm-row gap-3 flex-shrink-0">
+                        <a href="pages/premium.html" class="btn bg-primary text-on-primary rounded-pill px-4 py-2 hover-bg-primary-container font-label-md shadow-sm">Upgrade to Premium</a>
+                        <a href="pages/premium.html" class="btn btn-outline-secondary text-on-surface rounded-pill px-4 py-2 font-label-md">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-5 mt-auto">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>LuminaBooks</h5>
-                    <p class="text-muted">Your gateway to classic literature.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="pages/privacy.html" class="text-muted text-decoration-none">Privacy Policy</a></li>
-                        <li><a href="pages/terms.html" class="text-muted text-decoration-none">Terms of Service</a></li>
-                        <li><a href="pages/contact.html" class="text-muted text-decoration-none">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4 text-md-end">
-                    <h5>Connect</h5>
-                    <div class="d-flex gap-3 justify-content-md-end mb-3">
-                        <span class="material-symbols-outlined">public</span>
-                        <span class="material-symbols-outlined">alternate_email</span>
-                        <span class="material-symbols-outlined">share</span>
-                    </div>
-                    <button onclick="window.scrollTo(0,0)" class="btn btn-outline-light btn-sm">Top &uarr;</button>
+    <footer class="bg-secondary-container w-100 mt-auto">
+        <div class="row g-4 py-5 px-margin-mobile px-md-4 max-w-container-max mx-auto">
+            <div class="col-md-4 d-flex flex-column gap-3">
+                <div class="font-headline-sm fw-bold text-primary">LuminaBooks</div>
+                <p class="font-label-md text-on-secondary-container m-0">© 2024 LuminaBooks. All rights reserved.</p>
+                <div class="d-flex flex-column gap-2 mt-2">
+                    <a href="pages/privacy.html" class="font-label-md text-on-secondary-container text-decoration-none opacity-75 hover-opacity-100">Privacy Policy</a>
+                    <a href="pages/terms.html" class="font-label-md text-on-secondary-container text-decoration-none opacity-75 hover-opacity-100">Terms of Service</a>
                 </div>
             </div>
-            <div class="text-center text-muted mt-3 pt-3 border-top border-secondary">
-                <small>&copy; 2026 LuminaBooks. All rights reserved.</small>
+            <div class="col-md-4 d-flex flex-column gap-3">
+                <h4 class="font-headline-sm fw-bold text-primary m-0">Contact Us</h4>
+                <p class="font-body-md text-on-secondary-container m-0">hello@luminabooks.com<br>+1 (555) 123-4567</p>
+                <p class="font-body-md text-on-secondary-container m-0 mt-2">123 Quiet Lane, Suite 400<br>Reading City, NY 10001</p>
+            </div>
+            <div class="col-md-4 d-flex flex-column gap-3 align-items-md-end">
+                <h4 class="font-headline-sm fw-bold text-primary m-0">Follow Us</h4>
+                <div class="d-flex gap-3 text-on-surface-variant mb-4">
+                    <a href="#" class="text-on-surface-variant text-decoration-none"><span class="material-symbols-outlined">flutter_dash</span></a>
+                    <a href="#" class="text-on-surface-variant text-decoration-none"><span class="material-symbols-outlined">photo_camera</span></a>
+                    <a href="#" class="text-on-surface-variant text-decoration-none"><span class="material-symbols-outlined">work</span></a>
+                </div>
+                <button class="btn bg-surface rounded-circle shadow-sm d-flex align-items-center justify-content-center p-0 mt-auto" style="width: 48px; height: 48px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <span class="material-symbols-outlined text-primary">arrow_upward</span>
+                </button>
             </div>
         </div>
     </footer>
 
-    <!-- Global Toasts -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="globalToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto" id="toastTitle">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" id="toastMessage"></div>
-        </div>
-    </div>
-
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-    <script src='js/books.js'></script><script>jQuery(document).ready(function(){ loadBooks(true); });</script>
+    <script src="js/books.js"></script>
 </body>
 </html>

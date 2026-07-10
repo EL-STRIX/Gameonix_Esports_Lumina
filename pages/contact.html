@@ -1,136 +1,54 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - LuminaBooks</title>
-    <!-- Bootstrap 5 CSS -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact - LuminaBooks</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #212529; }
-        .navbar-brand { font-weight: 700; color: #6e3446 !important; }
-        .btn-primary { background-color: #6e3446; border-color: #6e3446; }
-        .btn-primary:hover { background-color: #562736; border-color: #562736; }
-        .card { transition: transform 0.2s, box-shadow 0.2s; border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        html { scroll-behavior: smooth; }
-        .skeleton { background: #e9ecef; animation: pulse 1.5s infinite; border-radius: 4px; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
-    </style>
+    <link href="../css/style.css" rel="stylesheet">
 </head>
-<body class="d-flex flex-column min-vh-100">
-
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="../index.html">LuminaBooks</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../pages/books.html">Books</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../pages/about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../pages/faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../pages/contact.html">Contact</a></li>
-                </ul>
-                <form class="d-flex me-3" id="navSearchForm">
-                    <input class="form-control me-2" type="search" placeholder="Search books..." id="navSearchInput">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </form>
-                <div id="premiumNavBadge">
-                    <a href="../pages/premium.html" class="btn btn-warning fw-bold">Go Premium</a>
-                </div>
+<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100" style="padding-top: 64px;">
+    
+    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant" style="height: 64px;">
+        <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
+            <a href="../index.html" class="font-headline-md text-primary fw-bold text-decoration-none">LuminaBooks</a>
+            <div class="d-none d-md-flex align-items-center gap-4">
+                <a href="../index.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Home</a>
+                <a href="books.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Books</a>
+                <a href="premium.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Premium</a>
+                <a href="about.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">About</a>
+                <a href="contact.html" class="font-label-md text-primary fw-bold text-decoration-none border-bottom border-primary border-2 pb-1">Contact</a>
+                <a href="faq.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">FAQ</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow-1 py-5">
-        
-        <div class='container'>
-            <div class='row justify-content-center'>
-                <div class='col-md-8'>
-                    <h2 class='text-center mb-4'>Get in Touch</h2>
-                    <div class='card p-4 shadow-sm'>
-                        <form id='contactForm'>
-                            <div class='mb-3'>
-                                <label class='form-label'>Full Name</label>
-                                <input type='text' class='form-control' required id='contactName'>
-                            </div>
-                            <div class='mb-3'>
-                                <label class='form-label'>Email Address</label>
-                                <input type='email' class='form-control' required id='contactEmail'>
-                            </div>
-                            <div class='mb-3'>
-                                <label class='form-label'>Subject</label>
-                                <input type='text' class='form-control' required id='contactSubject'>
-                            </div>
-                            <div class='mb-4'>
-                                <label class='form-label'>Message</label>
-                                <textarea class='form-control' rows='5' required id='contactMessage'></textarea>
-                            </div>
-                            <button type='submit' class='btn btn-primary btn-lg w-100'>Send Message</button>
-                        </form>
-                    </div>
+    <main class="flex-grow-1 max-w-container-max mx-auto w-100 px-margin-mobile px-md-4 py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <h1 class="font-display-lg text-on-background mb-4 text-center">Get in Touch</h1>
+                <div class="bg-surface-container-low p-5 rounded-xl border border-surface-variant book-card-shadow">
+                    <form>
+                        <div class="mb-4">
+                            <label class="form-label font-label-md text-on-surface">Name</label>
+                            <input type="text" class="form-control bg-surface-container-lowest" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label font-label-md text-on-surface">Email</label>
+                            <input type="email" class="form-control bg-surface-container-lowest" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label font-label-md text-on-surface">Message</label>
+                            <textarea class="form-control bg-surface-container-lowest" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn bg-primary text-on-primary w-100 rounded-pill font-label-md py-2">Send Message</button>
+                    </form>
                 </div>
             </div>
         </div>
-    
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-5 mt-auto">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>LuminaBooks</h5>
-                    <p class="text-muted">Your gateway to classic literature.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="../pages/privacy.html" class="text-muted text-decoration-none">Privacy Policy</a></li>
-                        <li><a href="../pages/terms.html" class="text-muted text-decoration-none">Terms of Service</a></li>
-                        <li><a href="../pages/contact.html" class="text-muted text-decoration-none">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4 text-md-end">
-                    <h5>Connect</h5>
-                    <div class="d-flex gap-3 justify-content-md-end mb-3">
-                        <span class="material-symbols-outlined">public</span>
-                        <span class="material-symbols-outlined">alternate_email</span>
-                        <span class="material-symbols-outlined">share</span>
-                    </div>
-                    <button onclick="window.scrollTo(0,0)" class="btn btn-outline-light btn-sm">Top &uarr;</button>
-                </div>
-            </div>
-            <div class="text-center text-muted mt-3 pt-3 border-top border-secondary">
-                <small>&copy; 2026 LuminaBooks. All rights reserved.</small>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Global Toasts -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="globalToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
-                <strong class="me-auto" id="toastTitle">Notification</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body" id="toastMessage"></div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/main.js"></script>
-    <script src='../js/contact.js'></script>
 </body>
 </html>
