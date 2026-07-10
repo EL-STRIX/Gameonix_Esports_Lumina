@@ -156,3 +156,27 @@ body {
 
 .cursor-pointer { cursor: pointer; }
 .object-cover { object-fit: cover; }
+
+/* Replaced Inline Styles */
+.pt-navbar { padding-top: 64px; }
+.h-navbar { height: 64px; }
+.w-search-input { width: 120px; }
+.w-search-input-lg { width: 220px; }
+.max-w-hero-text { max-width: 500px; }
+.max-w-catalog-text { max-width: 600px; }
+.icon-20 { font-size: 20px; }
+.icon-16 { font-size: 16px; }
+.icon-fill-1 { font-variation-settings: 'FILL' 1; }
+.icon-120 { font-size: 120px; }
+.bg-hero-blur {
+    width: 12rem; height: 12rem; bottom: -1.5rem; right: -1.5rem; filter: blur(2rem); mix-blend-mode: multiply; opacity: 0.5; z-index: 0;
+}
+.bg-premium-radial {
+    background-image: radial-gradient(circle at right center, #6e3446 0%, transparent 50%); pointer-events: none;
+}
+.btn-scroll-top { width: 48px; height: 48px; }
+.focus-ring-none { outline: none; box-shadow: none; }
+
+.pt-150 { padding-top: 150%; }
+.lh-18 { line-height: 1.8; }
+

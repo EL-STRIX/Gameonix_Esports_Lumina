@@ -12,10 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
-<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100" style="padding-top: 64px;">
+<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100 pt-navbar">
     
     <!-- TopNavBar -->
-    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant" style="height: 64px;">
+    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant h-navbar">
         <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
             <!-- Brand -->
             <a href="../index.html" class="font-headline-md text-primary fw-bold text-decoration-none">
@@ -37,11 +37,11 @@
         <!-- Hero Section -->
         <section class="text-center mb-5 fade-in">
             <div class="d-inline-flex align-items-center gap-2 bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-pill mb-3">
-                <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                <span class="material-symbols-outlined icon-16 icon-fill-1">workspace_premium</span>
                 <span class="font-label-sm fw-bold text-uppercase">Unlock Deep Reading</span>
             </div>
             <h1 class="font-display-lg text-on-background mb-3">Elevate Your Literary Journey</h1>
-            <p class="font-body-lg text-on-surface-variant mx-auto mb-0" style="max-width: 600px;">
+            <p class="font-body-lg text-on-surface-variant mx-auto mb-0 max-w-catalog-text">
                 Experience LuminaBooks without limits. Curated collections, exclusive insights, and a distraction-free sanctuary for the modern reader.
             </p>
         </section>
@@ -51,7 +51,7 @@
             <div class="col-md-8 col-lg-6">
                 <div class="bg-surface rounded-xl border border-surface-variant p-4 p-md-5 book-card-shadow position-relative overflow-hidden">
                     <div class="position-absolute top-0 end-0 p-4 opacity-10" style="pointer-events: none;">
-                        <span class="material-symbols-outlined text-primary" style="font-size: 120px;">diamond</span>
+                        <span class="material-symbols-outlined text-primary icon-120">diamond</span>
                     </div>
                     
                     <div class="position-relative z-1">
@@ -63,7 +63,7 @@
                             <span class="font-body-md text-on-surface-variant">/ month</span>
                         </div>
                         
-                        <button id="upgradeBtn" class="btn bg-primary text-on-primary w-100 rounded-pill py-3 font-label-md hover-bg-primary-container mb-4 shadow-sm transition-all">
+                        <button id="upgradeBtn" data-bs-toggle="modal" data-bs-target="#checkoutModal" class="btn bg-primary text-on-primary w-100 rounded-pill py-3 font-label-md hover-bg-primary-container mb-4 shadow-sm transition-all">
                             Upgrade to Premium
                         </button>
                         
@@ -86,6 +86,58 @@
             </div>
         </section>
     </main>
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-surface text-on-surface border-surface-variant">
+          <div class="modal-header border-surface-variant">
+            <h5 class="modal-title font-headline-md" id="checkoutModalLabel">Secure Checkout</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="font-body-md text-on-surface-variant">LuminaBooks Premium (Monthly)</span>
+                <span class="font-headline-sm fw-bold text-primary">$9.99</span>
+            </div>
+            <form id="checkoutForm">
+                <div class="mb-3">
+                    <label class="form-label font-label-md">Name on Card</label>
+                    <input type="text" class="form-control bg-surface-container-lowest" id="cc-name" required placeholder="Jane Doe">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label font-label-md">Card Number</label>
+                    <input type="text" class="form-control bg-surface-container-lowest" id="cc-number" required placeholder="0000 0000 0000 0000" pattern="\d{16}" title="16 digit card number">
+                </div>
+                <div class="row g-3 mb-4">
+                    <div class="col-6">
+                        <label class="form-label font-label-md">Expiry</label>
+                        <input type="text" class="form-control bg-surface-container-lowest" id="cc-exp" required placeholder="MM/YY" pattern="\d\d/\d\d" title="Format: MM/YY">
+                    </div>
+                    <div class="col-6">
+                        <label class="form-label font-label-md">CVC</label>
+                        <input type="text" class="form-control bg-surface-container-lowest" id="cc-cvc" required placeholder="123" pattern="\d{3,4}" title="3 or 4 digit CVC">
+                    </div>
+                </div>
+                <button type="submit" id="checkoutSubmitBtn" class="btn bg-primary text-on-primary w-100 rounded-pill py-2 font-label-md hover-bg-primary-container shadow-sm d-flex justify-content-center align-items-center gap-2">
+                    Pay $9.99
+                </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="checkoutToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body font-label-md" id="checkoutToastMsg">
+            Premium Activated Successfully!
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-secondary-container w-100 mt-auto">
@@ -102,3 +154,5 @@
     <script src="../js/checkout.js"></script>
 </body>
 </html>
+
+

@@ -26,3 +26,4 @@ document.addEventListener('booksLoaded', () => {
 
     renderBooks(searchResults, 'search-results-grid');
 });
+

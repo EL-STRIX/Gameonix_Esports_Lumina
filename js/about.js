@@ -15,3 +15,4 @@ $(document).ready(function() {
         console.error("Failed to load books.json for stats.");
     });
 });
+

@@ -12,10 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
-<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100" style="padding-top: 64px;">
+<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100 pt-navbar">
     
     <!-- TopNavBar -->
-    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant" style="height: 64px;">
+    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant h-navbar">
         <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
             <a href="../index.html" class="font-headline-md text-primary fw-bold text-decoration-none">
                 LuminaBooks
@@ -44,20 +44,20 @@
         <section class="row g-4 mb-section-padding">
             <div class="col-md-4">
                 <div class="bg-surface-container-low p-5 rounded-xl border border-surface-variant text-center book-card-shadow h-100 d-flex flex-column justify-content-center">
-                    <h3 class="font-display-lg-mobile text-primary mb-2">1,000+</h3>
-                    <p class="font-label-md text-outline m-0 text-uppercase">Curated Titles</p>
+                    <h3 class="font-display-lg-mobile text-primary mb-2" id="statBooks">10</h3>
+                    <p class="font-label-md text-outline m-0 text-uppercase">Total Books</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="bg-surface-container-low p-5 rounded-xl border border-surface-variant text-center book-card-shadow h-100 d-flex flex-column justify-content-center">
-                    <h3 class="font-display-lg-mobile text-primary mb-2">50+</h3>
-                    <p class="font-label-md text-outline m-0 text-uppercase">Expert Authors</p>
+                    <h3 class="font-display-lg-mobile text-primary mb-2" id="statAuthors">10</h3>
+                    <p class="font-label-md text-outline m-0 text-uppercase">Unique Authors</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="bg-surface-container-low p-5 rounded-xl border border-surface-variant text-center book-card-shadow h-100 d-flex flex-column justify-content-center">
-                    <h3 class="font-display-lg-mobile text-primary mb-2">24/7</h3>
-                    <p class="font-label-md text-outline m-0 text-uppercase">Quiet Access</p>
+                    <h3 class="font-display-lg-mobile text-primary mb-2" id="statGenres">5</h3>
+                    <p class="font-label-md text-outline m-0 text-uppercase">Book Genres</p>
                 </div>
             </div>
         </section>
@@ -79,3 +79,5 @@
     <script src="../js/about.js"></script>
 </body>
 </html>
+
+

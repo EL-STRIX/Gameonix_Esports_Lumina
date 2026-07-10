@@ -12,10 +12,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="bg-background text-on-surface font-body-md" style="padding-top: 64px;">
+<body class="bg-background text-on-surface font-body-md pt-navbar">
     
     <!-- TopNavBar -->
-    <nav class="fixed-top w-100 bg-surface" style="box-shadow: 0 1px 0 rgba(0,0,0,0.05); height: 64px;">
+    <nav class="fixed-top w-100 bg-surface h-navbar shadow-sm">
         <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
             <!-- Brand -->
             <a href="index.html" class="font-headline-md text-primary fw-bold text-decoration-none">
@@ -33,8 +33,8 @@
             <!-- Actions -->
             <div class="d-flex align-items-center gap-3">
                 <div class="d-none d-md-flex align-items-center bg-surface-container-lowest border rounded-pill px-3 py-1 me-2">
-                    <span class="material-symbols-outlined text-on-surface-variant me-2" style="font-size: 20px;">search</span>
-                    <input type="text" placeholder="Search books..." class="border-0 bg-transparent text-on-surface" style="outline: none; width: 120px;">
+                    <span class="material-symbols-outlined text-on-surface-variant me-2 icon-20">search</span>
+                    <input type="text" placeholder="Search books..." class="border-0 bg-transparent text-on-surface focus-ring-none w-search-input">
                 </div>
                 <button class="btn btn-link text-primary font-label-md text-decoration-none d-none d-md-block">Sign In</button>
                 <button class="btn bg-primary text-on-primary rounded-pill px-4 hover-bg-primary-container font-label-md d-none d-md-block">Get Started</button>
@@ -48,13 +48,13 @@
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 d-flex flex-column gap-4">
                     <h1 class="font-display-lg text-on-background m-0">Discover Your Next Great Read</h1>
-                    <p class="font-body-lg text-on-surface-variant m-0" style="max-width: 500px;">
+                    <p class="font-body-lg text-on-surface-variant m-0 max-w-hero-text">
                         Immerse yourself in a curated collection of literary masterpieces. A quiet sanctuary for readers who seek effortless discovery and profound narratives.
                     </p>
                     <div class="pt-2">
                         <a href="pages/books.html" class="btn bg-primary text-on-primary rounded-pill px-4 py-2 hover-bg-primary-container d-inline-flex align-items-center font-label-md shadow-sm">
                             Browse Books
-                            <span class="material-symbols-outlined ms-2" style="font-size: 20px;">arrow_forward</span>
+                            <span class="material-symbols-outlined ms-2 icon-20">arrow_forward</span>
                         </a>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     <div class="aspect-4-3 rounded-xl overflow-hidden book-card-shadow position-relative z-1">
                         <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3teCBaJQpd8Vjk4HaB8SKYWVGxYtvWHLkqx2rs03DJ3h-SRCHTYxCqQHPSTPYzlCsM7vpUMBFp30IGYJKzzLaMZ8UIczv2csLA7iHGM034HmpQRtreuXe3ST8nPKxt8X-ib6raL1u7JyG9hgP2Xqmch1QxjWlGmhBY7t5Suul36Hl0_SfuhBtzaIMH4GvEeP68qe3khdAxDf6ykCbpS-HslpRg3vdWcWgcpU3ik6N4f6weaTv-1y2O8eCBPm2x8h3SXyp6cAt068" class="w-100 h-100 object-cover" alt="Reading nook">
                     </div>
-                    <div class="position-absolute bg-secondary-fixed rounded-circle" style="width: 12rem; height: 12rem; bottom: -1.5rem; right: -1.5rem; filter: blur(2rem); mix-blend-mode: multiply; opacity: 0.5; z-index: 0;"></div>
+                    <div class="position-absolute bg-secondary-fixed rounded-circle bg-hero-blur"></div>
                 </div>
             </div>
         </section>
@@ -76,7 +76,7 @@
                         <p class="font-body-md text-on-surface-variant m-0">Handpicked selections for your quiet moments.</p>
                     </div>
                     <a href="pages/books.html" class="font-label-md text-primary d-flex align-items-center text-decoration-none">
-                        View all <span class="material-symbols-outlined ms-1" style="font-size: 20px;">chevron_right</span>
+                        View all <span class="material-symbols-outlined ms-1 icon-20">chevron_right</span>
                     </a>
                 </div>
                 <!-- Dynamic Grid injected by books.js -->
@@ -89,23 +89,23 @@
         <!-- Premium Banner -->
         <section class="py-5 px-margin-mobile px-md-4 fade-in delay-200">
             <div class="max-w-container-max mx-auto bg-surface-container-high rounded-xl overflow-hidden position-relative border border-outline-variant">
-                <div class="position-absolute top-0 bottom-0 start-0 end-0 opacity-25" style="background-image: radial-gradient(circle at right center, #6e3446 0%, transparent 50%); pointer-events: none;"></div>
+                <div class="position-absolute top-0 bottom-0 start-0 end-0 opacity-25 bg-premium-radial"></div>
                 <div class="position-relative p-4 p-md-5 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-4">
                     <div>
                         <div class="d-inline-flex align-items-center gap-2 bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-pill mb-3">
-                            <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                            <span class="material-symbols-outlined icon-16 icon-fill-1">workspace_premium</span>
                             <span class="font-label-sm">LuminaBooks Premium</span>
                         </div>
                         <h2 class="font-headline-md text-on-background mb-3">Elevate Your Reading Experience</h2>
                         <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
                             <li class="d-flex align-items-center font-body-md text-on-surface-variant">
-                                <span class="material-symbols-outlined text-primary me-3" style="font-size: 20px;">check_circle</span> Unlimited access to curated editorial collections.
+                                <span class="material-symbols-outlined text-primary me-3 icon-20">check_circle</span> Unlimited access to curated editorial collections.
                             </li>
                             <li class="d-flex align-items-center font-body-md text-on-surface-variant">
-                                <span class="material-symbols-outlined text-primary me-3" style="font-size: 20px;">check_circle</span> Distraction-free, ad-less reading environment.
+                                <span class="material-symbols-outlined text-primary me-3 icon-20">check_circle</span> Distraction-free, ad-less reading environment.
                             </li>
                             <li class="d-flex align-items-center font-body-md text-on-surface-variant">
-                                <span class="material-symbols-outlined text-primary me-3" style="font-size: 20px;">check_circle</span> Early access to new releases and author interviews.
+                                <span class="material-symbols-outlined text-primary me-3 icon-20">check_circle</span> Early access to new releases and author interviews.
                             </li>
                         </ul>
                     </div>
@@ -141,7 +141,7 @@
                     <a href="#" class="text-on-surface-variant text-decoration-none"><span class="material-symbols-outlined">photo_camera</span></a>
                     <a href="#" class="text-on-surface-variant text-decoration-none"><span class="material-symbols-outlined">work</span></a>
                 </div>
-                <button class="btn bg-surface rounded-circle shadow-sm d-flex align-items-center justify-content-center p-0 mt-auto" style="width: 48px; height: 48px;" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <button class="btn bg-surface rounded-circle shadow-sm d-flex align-items-center justify-content-center p-0 mt-auto btn-scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                     <span class="material-symbols-outlined text-primary">arrow_upward</span>
                 </button>
             </div>
@@ -154,3 +154,4 @@
     <script src="js/books.js"></script>
 </body>
 </html>
+

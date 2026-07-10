@@ -61,3 +61,4 @@ const GlobalApp = {
 $(document).ready(function() {
     GlobalApp.init();
 });
+
