@@ -4,10 +4,17 @@
     "title": "To Kill a Mockingbird",
     "author": "Harper Lee",
     "genre": "Fiction",
-    "coverImage": "assets/images/books/book1.svg",
+    "coverImage": "assets/images/books/book1.jpg",
     "summary": "Compassionate, dramatic, and deeply moving, To Kill A Mockingbird takes readers to the roots of human behavior - to innocence and experience, kindness and cruelty, love and hatred, humor and pathos.",
-    "advantages": ["Pulitzer Prize winner", "Tackles important social issues", "Unforgettable characters"],
-    "disadvantages": ["Can be emotionally heavy", "Slow pacing in the beginning"],
+    "advantages": [
+      "Pulitzer Prize winner",
+      "Tackles important social issues",
+      "Unforgettable characters"
+    ],
+    "disadvantages": [
+      "Can be emotionally heavy",
+      "Slow pacing in the beginning"
+    ],
     "rating": 4.9,
     "price": "14.99",
     "isPremiumRequired": false,
@@ -19,17 +26,28 @@
     "pages": "281",
     "featured": true,
     "bestseller": true,
-    "relatedBookIds": [4, 5, 8]
+    "relatedBookIds": [
+      4,
+      5,
+      8
+    ]
   },
   {
     "id": 2,
     "title": "1984",
     "author": "George Orwell",
     "genre": "Sci-Fi",
-    "coverImage": "assets/images/books/book2.svg",
+    "coverImage": "assets/images/books/book2.jpg",
     "summary": "Among the seminal texts of the 20th century, Nineteen Eighty-Four is a rare work that grows more haunting as its futuristic purgatory becomes more real.",
-    "advantages": ["Profound political commentary", "Inventive vocabulary", "Highly relevant"],
-    "disadvantages": ["Bleak and depressing tone", "Dense political theory sections"],
+    "advantages": [
+      "Profound political commentary",
+      "Inventive vocabulary",
+      "Highly relevant"
+    ],
+    "disadvantages": [
+      "Bleak and depressing tone",
+      "Dense political theory sections"
+    ],
     "rating": 4.8,
     "price": "19.99",
     "isPremiumRequired": true,
@@ -41,17 +59,26 @@
     "pages": "328",
     "featured": true,
     "bestseller": true,
-    "relatedBookIds": [9]
+    "relatedBookIds": [
+      9
+    ]
   },
   {
     "id": 3,
     "title": "The Lord of the Rings",
     "author": "J.R.R. Tolkien",
     "genre": "Fiction",
-    "coverImage": "assets/images/books/book3.svg",
+    "coverImage": "assets/images/books/book3.jpg",
     "summary": "One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them. The epic high-fantasy masterpiece that defined a genre.",
-    "advantages": ["Epic world-building", "Rich lore and languages", "Incredible character arcs"],
-    "disadvantages": ["Extremely long", "Highly descriptive prose isn't for everyone"],
+    "advantages": [
+      "Epic world-building",
+      "Rich lore and languages",
+      "Incredible character arcs"
+    ],
+    "disadvantages": [
+      "Extremely long",
+      "Highly descriptive prose isn't for everyone"
+    ],
     "rating": 4.9,
     "price": "29.99",
     "isPremiumRequired": true,
@@ -63,17 +90,26 @@
     "pages": "1178",
     "featured": true,
     "bestseller": true,
-    "relatedBookIds": [7]
+    "relatedBookIds": [
+      7
+    ]
   },
   {
     "id": 4,
     "title": "Pride and Prejudice",
     "author": "Jane Austen",
     "genre": "Fiction",
-    "coverImage": "assets/images/books/book4.svg",
+    "coverImage": "assets/images/books/book4.jpg",
     "summary": "Since its immediate success in 1813, Pride and Prejudice has remained one of the most popular novels in the English language. A brilliant comedy of manners.",
-    "advantages": ["Witty dialogue", "Fascinating social critique", "Classic romance"],
-    "disadvantages": ["Older English style", "Slower romance build-up"],
+    "advantages": [
+      "Witty dialogue",
+      "Fascinating social critique",
+      "Classic romance"
+    ],
+    "disadvantages": [
+      "Older English style",
+      "Slower romance build-up"
+    ],
     "rating": 4.7,
     "price": "12.50",
     "isPremiumRequired": false,
@@ -85,17 +121,27 @@
     "pages": "279",
     "featured": false,
     "bestseller": true,
-    "relatedBookIds": [1, 8]
+    "relatedBookIds": [
+      1,
+      8
+    ]
   },
   {
     "id": 5,
     "title": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
     "genre": "Fiction",
-    "coverImage": "assets/images/books/book5.svg",
+    "coverImage": "assets/images/books/book5.jpg",
     "summary": "The quintessential novel of the Jazz Age. The Great Gatsby explores themes of decadence, idealism, and the American Dream through the mysterious millionaire Jay Gatsby.",
-    "advantages": ["Beautiful prose", "Short and impactful", "Strong symbolism"],
-    "disadvantages": ["Unlikable characters", "Tragic ending"],
+    "advantages": [
+      "Beautiful prose",
+      "Short and impactful",
+      "Strong symbolism"
+    ],
+    "disadvantages": [
+      "Unlikable characters",
+      "Tragic ending"
+    ],
     "rating": 4.6,
     "price": "15.99",
     "isPremiumRequired": false,
@@ -107,17 +153,27 @@
     "pages": "180",
     "featured": false,
     "bestseller": true,
-    "relatedBookIds": [1, 4]
+    "relatedBookIds": [
+      1,
+      4
+    ]
   },
   {
     "id": 6,
     "title": "The Book Thief",
     "author": "Markus Zusak",
     "genre": "History",
-    "coverImage": "assets/images/books/book6.svg",
+    "coverImage": "assets/images/books/book6.jpg",
     "summary": "Narrated by Death, this is the story of Liesel Meminger, a young foster girl living outside of Munich during WWII, who steals books to share with her neighbors.",
-    "advantages": ["Unique narrator", "Deeply moving", "Beautiful message about words"],
-    "disadvantages": ["Heartbreaking", "Slightly disjointed timeline"],
+    "advantages": [
+      "Unique narrator",
+      "Deeply moving",
+      "Beautiful message about words"
+    ],
+    "disadvantages": [
+      "Heartbreaking",
+      "Slightly disjointed timeline"
+    ],
     "rating": 4.8,
     "price": "13.99",
     "isPremiumRequired": false,
@@ -129,17 +185,27 @@
     "pages": "584",
     "featured": true,
     "bestseller": true,
-    "relatedBookIds": [1, 9]
+    "relatedBookIds": [
+      1,
+      9
+    ]
   },
   {
     "id": 7,
     "title": "The Hobbit",
     "author": "J.R.R. Tolkien",
     "genre": "Fiction",
-    "coverImage": "assets/images/books/book7.svg",
+    "coverImage": "assets/images/books/book7.jpg",
     "summary": "A great modern classic and the prelude to The Lord of the Rings. Bilbo Baggins is a hobbit who enjoys a comfortable, unambitious life.",
-    "advantages": ["Accessible fantasy", "Engaging adventure", "Lighter tone than LOTR"],
-    "disadvantages": ["More juvenile tone", "Slower start"],
+    "advantages": [
+      "Accessible fantasy",
+      "Engaging adventure",
+      "Lighter tone than LOTR"
+    ],
+    "disadvantages": [
+      "More juvenile tone",
+      "Slower start"
+    ],
     "rating": 4.8,
     "price": "14.99",
     "isPremiumRequired": false,
@@ -151,17 +217,26 @@
     "pages": "310",
     "featured": false,
     "bestseller": true,
-    "relatedBookIds": [3]
+    "relatedBookIds": [
+      3
+    ]
   },
   {
     "id": 8,
     "title": "Little Women",
     "author": "Louisa May Alcott",
     "genre": "Fiction",
-    "coverImage": "assets/images/books/book8.svg",
+    "coverImage": "assets/images/books/book8.jpg",
     "summary": "The timeless coming-of-age story of four sisters—Meg, Jo, Beth, and Amy March—as they navigate the transition from childhood to womanhood.",
-    "advantages": ["Strong character development", "Heartwarming family dynamics", "Feminist undertones"],
-    "disadvantages": ["Episodic structure", "Some moralizing"],
+    "advantages": [
+      "Strong character development",
+      "Heartwarming family dynamics",
+      "Feminist undertones"
+    ],
+    "disadvantages": [
+      "Episodic structure",
+      "Some moralizing"
+    ],
     "rating": 4.7,
     "price": "11.99",
     "isPremiumRequired": false,
@@ -173,17 +248,28 @@
     "pages": "759",
     "featured": false,
     "bestseller": false,
-    "relatedBookIds": [4, 1]
+    "relatedBookIds": [
+      4,
+      1
+    ]
   },
   {
     "id": 9,
     "title": "Crime and Punishment",
     "author": "Fyodor Dostoevsky",
     "genre": "Psychology",
-    "coverImage": "assets/images/books/book9.svg",
+    "coverImage": "assets/images/books/book9.jpg",
     "summary": "A psychological thriller and moral masterpiece about a destitute student in St. Petersburg who murders a pawnbroker and is consumed by guilt and paranoia.",
-    "advantages": ["Deep psychological insight", "Complex morality", "Masterful suspense"],
-    "disadvantages": ["Heavy themes", "Difficult Russian names", "Dense philosophical dialogues"],
+    "advantages": [
+      "Deep psychological insight",
+      "Complex morality",
+      "Masterful suspense"
+    ],
+    "disadvantages": [
+      "Heavy themes",
+      "Difficult Russian names",
+      "Dense philosophical dialogues"
+    ],
     "rating": 4.8,
     "price": "18.50",
     "isPremiumRequired": true,
@@ -195,17 +281,27 @@
     "pages": "671",
     "featured": false,
     "bestseller": true,
-    "relatedBookIds": [2, 10]
+    "relatedBookIds": [
+      2,
+      10
+    ]
   },
   {
     "id": 10,
     "title": "The Count of Monte Cristo",
     "author": "Alexandre Dumas",
     "genre": "Thriller",
-    "coverImage": "assets/images/books/book10.svg",
+    "coverImage": "assets/images/books/book10.jpg",
     "summary": "An epic tale of betrayal, adventure, and revenge. Edmond Dantès is falsely accused of treason and imprisoned, only to escape and exact a slow vengeance.",
-    "advantages": ["Incredible revenge plot", "Masterful pacing", "Complex web of characters"],
-    "disadvantages": ["Extremely long", "Some slow subplots"],
+    "advantages": [
+      "Incredible revenge plot",
+      "Masterful pacing",
+      "Complex web of characters"
+    ],
+    "disadvantages": [
+      "Extremely long",
+      "Some slow subplots"
+    ],
     "rating": 4.9,
     "price": "22.99",
     "isPremiumRequired": true,
@@ -217,6 +313,9 @@
     "pages": "1276",
     "featured": true,
     "bestseller": true,
-    "relatedBookIds": [9, 3]
+    "relatedBookIds": [
+      9,
+      3
+    ]
   }
 ]
