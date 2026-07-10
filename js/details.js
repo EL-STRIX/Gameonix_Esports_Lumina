@@ -7,7 +7,6 @@ $(document).ready(function() {
         if (book) {
             renderBookDetails(book);
             setupDownload(book);
-            setupReviews(book.id);
         }
     });
 });
@@ -97,58 +96,3 @@ function setupDownload(book) {
     });
 }
 
-function setupReviews(bookId) {
-    const html = `
-      <section class="pt-section-padding border-top border-surface-variant">
-        <h2 class="font-headline-md text-on-background mb-5 text-center">Reader Reviews</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="bg-surface-container-low p-4 rounded-lg mb-5 border border-surface-variant">
-                    <h4 class="font-headline-sm mb-3">Leave a Review</h4>
-                    <form id="reviewForm">
-                        <select class="form-select mb-3 bg-surface-container-lowest" id="reviewRating" required>
-                            <option value="5">5 Stars</option>
-                            <option value="4">4 Stars</option>
-                            <option value="3">3 Stars</option>
-                            <option value="2">2 Stars</option>
-                            <option value="1">1 Star</option>
-                        </select>
-                        <textarea class="form-control mb-3 bg-surface-container-lowest" id="reviewText" required rows="3" placeholder="Share your thoughts..."></textarea>
-                        <button type="submit" class="btn bg-primary text-on-primary rounded-pill px-4 hover-bg-primary-container">Submit Review</button>
-                    </form>
-                </div>
-                <div id="reviewsList" class="d-flex flex-column gap-3"></div>
-            </div>
-        </div>
-      </section>
-    `;
-    $('#reviewsSection').html(html);
-    
-    const storageKey = 'reviews_' + bookId;
-    function loadReviews() {
-        const reviews = JSON.parse(localStorage.getItem(storageKey)) || [];
-        let rHtml = '';
-        reviews.reverse().forEach(r => {
-            rHtml += `
-            <div class="bg-surface-container-lowest border border-surface-variant p-4 rounded-lg">
-                <div class="d-flex align-items-center mb-2">
-                    <span class="font-label-md fw-bold me-2">${r.rating}.0</span>
-                    <span class="material-symbols-outlined text-primary icon-16 icon-fill-1">star</span>
-                </div>
-                <p class="font-body-md text-on-surface-variant m-0">${r.text}</p>
-            </div>
-            `;
-        });
-        $('#reviewsList').html(rHtml);
-    }
-    
-    $('#reviewForm').on('submit', function(e) {
-        e.preventDefault();
-        const reviews = JSON.parse(localStorage.getItem(storageKey)) || [];
-        reviews.push({ rating: $('#reviewRating').val(), text: $('#reviewText').val() });
-        localStorage.setItem(storageKey, JSON.stringify(reviews));
-        $('#reviewText').val('');
-        loadReviews();
-    });
-    loadReviews();
-}
