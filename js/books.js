@@ -32,7 +32,7 @@ function setupFilters() {
         applyFilters();
     });
 
-    $('.btn:contains("All"), .btn:contains("Self-Help"), .btn:contains("Productivity"), .btn:contains("Philosophy"), .btn:contains("Psychology")').on('click', function() {
+    $('.btn:contains("All"), .btn:contains("Fiction"), .btn:contains("Sci-Fi"), .btn:contains("History"), .btn:contains("Psychology")').on('click', function() {
         $('.btn').removeClass('bg-primary text-on-primary border-primary').addClass('bg-transparent text-on-surface border-surface-variant');
         $(this).removeClass('bg-transparent text-on-surface border-surface-variant').addClass('bg-primary text-on-primary border-primary');
         currentGenre = $(this).text();
