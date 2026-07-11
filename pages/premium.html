@@ -6,153 +6,153 @@
     <title>Premium - LuminaBooks</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/global.css" rel="stylesheet">
+    <link href="../css/shared.css" rel="stylesheet">
+    <link href="../css/premium.css" rel="stylesheet">
 </head>
-<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100 pt-navbar">
+<body>
     
-    <!-- TopNavBar -->
-    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant h-navbar">
-        <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
-            <!-- Brand -->
-            <a href="../index.html" class="font-headline-md text-primary fw-bold text-decoration-none">
-                LuminaBooks
-            </a>
-            <!-- Navigation Links -->
-            <div class="d-none d-md-flex align-items-center gap-4">
-                <a href="../index.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Home</a>
-                <a href="books.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Books</a>
-                <a href="premium.html" class="font-label-md text-primary fw-bold text-decoration-none border-bottom border-primary border-2 pb-1">Premium</a>
-                <a href="about.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">About</a>
-                <a href="contact.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Contact</a>
-                <a href="faq.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">FAQ</a>
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">LuminaBooks</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="premium.html" class="active">Premium</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search books...">
+                </div>
+                <button class="btn btn-outline">Sign In</button>
+                <button class="btn btn-primary">Get Started</button>
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow-1 pt-5 pb-section-padding px-margin-mobile px-md-4 max-w-container-max mx-auto w-100">
-        <!-- Hero Section -->
-        <section class="text-center mb-5 fade-in">
-            <div class="d-inline-flex align-items-center gap-2 bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-pill mb-3">
-                <span class="material-symbols-outlined icon-16 icon-fill-1">workspace_premium</span>
-                <span class="font-label-sm fw-bold text-uppercase">Unlock Deep Reading</span>
+    <main class="container" style="padding-top: 100px;">
+        <section class="premium-hero">
+            <div class="premium-badge">
+                <span class="material-symbols-outlined">workspace_premium</span>
+                Unlock Deep Reading
             </div>
-            <h1 class="font-display-lg text-on-background mb-3">Elevate Your Literary Journey</h1>
-            <p class="font-body-lg text-on-surface-variant mx-auto mb-0 max-w-catalog-text">
+            <h1 class="premium-title">Elevate Your Literary Journey</h1>
+            <p class="premium-desc">
                 Experience LuminaBooks without limits. Curated collections, exclusive insights, and a distraction-free sanctuary for the modern reader.
             </p>
         </section>
 
-        <!-- Pricing Card -->
-        <section class="row justify-content-center mb-5 fade-in delay-100">
-            <div class="col-md-8 col-lg-6">
-                <div class="bg-surface rounded-xl border border-surface-variant p-4 p-md-5 book-card-shadow position-relative overflow-hidden">
-                    <div class="position-absolute top-0 end-0 p-4 opacity-10" style="pointer-events: none;">
-                        <span class="material-symbols-outlined text-primary icon-120">diamond</span>
+        <section class="pricing-card-wrapper">
+            <div class="pricing-card">
+                <span class="material-symbols-outlined pricing-card-bg-icon">diamond</span>
+                <div style="position: relative; z-index: 1;">
+                    <h2 class="pricing-title">LuminaBooks Premium</h2>
+                    <p class="pricing-subtitle">Everything you need for an immersive reading experience.</p>
+                    
+                    <div class="pricing-price-wrapper">
+                        <span class="pricing-price">$9.99</span>
+                        <span class="pricing-period">/ month</span>
                     </div>
                     
-                    <div class="position-relative z-1">
-                        <h2 class="font-headline-md text-on-background mb-2">LuminaBooks Premium</h2>
-                        <p class="font-body-md text-on-surface-variant mb-4">Everything you need for an immersive reading experience.</p>
-                        
-                        <div class="d-flex align-items-baseline mb-4">
-                            <span class="font-display-lg text-primary me-2">$9.99</span>
-                            <span class="font-body-md text-on-surface-variant">/ month</span>
+                    <button id="upgradeBtn" class="btn btn-primary btn-full">
+                        Upgrade to Premium
+                    </button>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined feature-icon">check_circle</span>
+                            <span>Unlimited access to the entire curated library</span>
                         </div>
-                        
-                        <button id="upgradeBtn" data-bs-toggle="modal" data-bs-target="#checkoutModal" class="btn bg-primary text-on-primary w-100 rounded-pill py-3 font-label-md hover-bg-primary-container mb-4 shadow-sm transition-all">
-                            Upgrade to Premium
-                        </button>
-                        
-                        <ul class="list-unstyled d-flex flex-column gap-3 m-0">
-                            <li class="d-flex align-items-center font-body-md text-on-surface">
-                                <span class="material-symbols-outlined text-tertiary me-3">check_circle</span> Unlimited access to the entire curated library
-                            </li>
-                            <li class="d-flex align-items-center font-body-md text-on-surface">
-                                <span class="material-symbols-outlined text-tertiary me-3">check_circle</span> Exclusive editorial content and author notes
-                            </li>
-                            <li class="d-flex align-items-center font-body-md text-on-surface">
-                                <span class="material-symbols-outlined text-tertiary me-3">check_circle</span> Distraction-free, zero-ad reading environment
-                            </li>
-                            <li class="d-flex align-items-center font-body-md text-on-surface">
-                                <span class="material-symbols-outlined text-tertiary me-3">check_circle</span> Offline reading mode via dedicated apps
-                            </li>
-                        </ul>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined feature-icon">check_circle</span>
+                            <span>Exclusive editorial content and author notes</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined feature-icon">check_circle</span>
+                            <span>Distraction-free, zero-ad reading environment</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="material-symbols-outlined feature-icon">check_circle</span>
+                            <span>Offline reading mode via dedicated apps</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
     <!-- Checkout Modal -->
-    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-surface text-on-surface border-surface-variant">
-          <div class="modal-header border-surface-variant">
-            <h5 class="modal-title font-headline-md" id="checkoutModalLabel">Secure Checkout</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <span class="font-body-md text-on-surface-variant">LuminaBooks Premium (Monthly)</span>
-                <span class="font-headline-sm fw-bold text-primary">$9.99</span>
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Secure Checkout</h5>
+                <button class="btn-close">&times;</button>
+            </div>
+            <div class="checkout-summary">
+                <span>LuminaBooks Premium (Monthly)</span>
+                <span class="checkout-price">$9.99</span>
             </div>
             <form id="checkoutForm">
-                <div class="mb-3">
-                    <label class="form-label font-label-md">Name on Card</label>
-                    <input type="text" class="form-control bg-surface-container-lowest" id="cc-name" required placeholder="Jane Doe">
+                <div class="form-group">
+                    <label class="form-label">Name on Card</label>
+                    <input type="text" class="form-control" id="cc-name" required placeholder="Jane Doe">
                 </div>
-                <div class="mb-3">
-                    <label class="form-label font-label-md">Card Number</label>
-                    <input type="text" class="form-control bg-surface-container-lowest" id="cc-number" required placeholder="0000 0000 0000 0000" pattern="\d{16}" title="16 digit card number">
+                <div class="form-group">
+                    <label class="form-label">Card Number</label>
+                    <input type="text" class="form-control" id="cc-number" required placeholder="0000 0000 0000 0000" pattern="\d{16}" title="16 digit card number">
                 </div>
-                <div class="row g-3 mb-4">
-                    <div class="col-6">
-                        <label class="form-label font-label-md">Expiry</label>
-                        <input type="text" class="form-control bg-surface-container-lowest" id="cc-exp" required placeholder="MM/YY" pattern="\d\d/\d\d" title="Format: MM/YY">
+                <div class="form-row">
+                    <div class="form-col">
+                        <label class="form-label">Expiry</label>
+                        <input type="text" class="form-control" id="cc-exp" required placeholder="MM/YY" pattern="\d\d/\d\d" title="Format: MM/YY">
                     </div>
-                    <div class="col-6">
-                        <label class="form-label font-label-md">CVC</label>
-                        <input type="text" class="form-control bg-surface-container-lowest" id="cc-cvc" required placeholder="123" pattern="\d{3,4}" title="3 or 4 digit CVC">
+                    <div class="form-col">
+                        <label class="form-label">CVC</label>
+                        <input type="text" class="form-control" id="cc-cvc" required placeholder="123" pattern="\d{3,4}" title="3 or 4 digit CVC">
                     </div>
                 </div>
-                <button type="submit" id="checkoutSubmitBtn" class="btn bg-primary text-on-primary w-100 rounded-pill py-2 font-label-md hover-bg-primary-container shadow-sm d-flex justify-content-center align-items-center gap-2">
+                <button type="submit" id="checkoutSubmitBtn" class="btn btn-primary" style="width: 100%;">
                     Pay $9.99
                 </button>
             </form>
-          </div>
         </div>
-      </div>
-    </div>
-    
-    <!-- Toast Notification -->
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-      <div id="checkoutToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-          <div class="toast-body font-label-md" id="checkoutToastMsg">
-            Premium Activated Successfully!
-          </div>
-          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-      </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-secondary-container w-100 mt-auto">
-        <div class="row g-4 py-5 px-margin-mobile px-md-4 max-w-container-max mx-auto">
-            <div class="col-md-4 d-flex flex-column gap-3">
-                <div class="font-headline-sm fw-bold text-primary">LuminaBooks</div>
-                <p class="font-label-md text-on-secondary-container m-0">© 2024 LuminaBooks. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-brand">LuminaBooks</div>
+                <p class="footer-text">© 2024 LuminaBooks. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Contact Us</div>
+                <div class="footer-links">
+                    <a href="mailto:hello@luminabooks.com">hello@luminabooks.com</a>
+                    <span>+1 (555) 123-4567</span>
+                    <span style="margin-top: 8px;">123 Quiet Lane, Suite 400<br>Reading City, NY 10001</span>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Follow Us</div>
+                <div style="display: flex; gap: 16px;">
+                    <span class="material-symbols-outlined" style="cursor: pointer; color: var(--text-muted);">public</span>
+                    <span class="material-symbols-outlined" style="cursor: pointer; color: var(--text-muted);">share</span>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/checkout.js"></script>
 </body>
 </html>
-
 

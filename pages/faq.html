@@ -6,86 +6,95 @@
     <title>FAQ - LuminaBooks</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/global.css" rel="stylesheet">
+    <link href="../css/shared.css" rel="stylesheet">
+    <link href="../css/faq.css" rel="stylesheet">
 </head>
-<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100 pt-navbar">
+<body>
     
-    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant h-navbar">
-        <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
-            <a href="../index.html" class="font-headline-md text-primary fw-bold text-decoration-none">LuminaBooks</a>
-            <div class="d-none d-md-flex align-items-center gap-4">
-                <a href="../index.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Home</a>
-                <a href="books.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Books</a>
-                <a href="premium.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Premium</a>
-                <a href="about.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">About</a>
-                <a href="contact.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Contact</a>
-                <a href="faq.html" class="font-label-md text-primary fw-bold text-decoration-none border-bottom border-primary border-2 pb-1">FAQ</a>
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">LuminaBooks</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="premium.html">Premium</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="faq.html" class="active">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search books...">
+                </div>
+                <button class="btn btn-outline">Sign In</button>
+                <button class="btn btn-primary">Get Started</button>
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow-1 max-w-container-max mx-auto w-100 px-margin-mobile px-md-4 py-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10 col-lg-8">
-                <h1 class="font-display-lg text-on-background mb-4 text-center">Frequently Asked Questions</h1>
-                <p class="font-body-lg text-on-surface-variant text-center mb-5">Everything you need to know about LuminaBooks.</p>
-                
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item bg-surface-container-low border-surface-variant mb-3 rounded-lg overflow-hidden border">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-surface-container-low text-on-background font-headline-sm focus-ring-none shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                What is LuminaBooks Premium?
-                            </button>
-                        </h2>
-                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body font-body-md text-on-surface-variant">
-                                LuminaBooks Premium gives you unlimited access to our entire curated library, exclusive editorial content, and a distraction-free, ad-less reading environment.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item bg-surface-container-low border-surface-variant mb-3 rounded-lg overflow-hidden border">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-surface-container-low text-on-background font-headline-sm focus-ring-none shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                How do I download an E-Book?
-                            </button>
-                        </h2>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body font-body-md text-on-surface-variant">
-                                You can download E-Books directly from the Book Details page. Note that some exclusive titles require an active Premium subscription to download.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item bg-surface-container-low border-surface-variant mb-3 rounded-lg overflow-hidden border">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button bg-surface-container-low text-on-background font-headline-sm focus-ring-none shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                Do I need to create an account?
-                            </button>
-                        </h2>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body font-body-md text-on-surface-variant">
-                                No! LuminaBooks respects your privacy and utilizes session-based interactions. You can browse, read, and even experience Premium features without registering a permanent account.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <main class="container" style="padding-top: 100px;">
+        <section class="faq-section">
+            <div class="faq-header">
+                <h1 class="faq-title">Frequently Asked Questions</h1>
+                <p class="faq-desc">Everything you need to know about LuminaBooks.</p>
             </div>
-        </div>
+            
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What is LuminaBooks Premium?</summary>
+                    <div class="faq-answer">
+                        LuminaBooks Premium gives you unlimited access to our entire curated library, exclusive editorial content, and a distraction-free, ad-less reading environment.
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary>How do I download an E-Book?</summary>
+                    <div class="faq-answer">
+                        You can download E-Books directly from the Book Details page. Note that some exclusive titles require an active Premium subscription to download.
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary>Do I need to create an account?</summary>
+                    <div class="faq-answer">
+                        No! LuminaBooks respects your privacy and utilizes session-based interactions. You can browse, read, and even experience Premium features without registering a permanent account.
+                    </div>
+                </details>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-secondary-container w-100 mt-auto">
-        <div class="row g-4 py-5 px-margin-mobile px-md-4 max-w-container-max mx-auto">
-            <div class="col-12 d-flex flex-column gap-3 text-center">
-                <div class="font-headline-sm fw-bold text-primary">LuminaBooks</div>
-                <p class="font-label-md text-on-secondary-container m-0">© 2024 LuminaBooks. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-brand">LuminaBooks</div>
+                <p class="footer-text">Â© 2024 LuminaBooks. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Contact Us</div>
+                <div class="footer-links">
+                    <a href="mailto:hello@luminabooks.com">hello@luminabooks.com</a>
+                    <span>+1 (555) 123-4567</span>
+                    <span style="margin-top: 8px;">123 Quiet Lane, Suite 400<br>Reading City, NY 10001</span>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Follow Us</div>
+                <div style="display: flex; gap: 16px;">
+                    <span class="material-symbols-outlined" style="cursor: pointer; color: var(--text-muted);">public</span>
+                    <span class="material-symbols-outlined" style="cursor: pointer; color: var(--text-muted);">share</span>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,43 @@
+/* contact.css */
+
+.contact-section {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 32px;
+}
+
+.contact-form-card {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.btn-full {
+  width: 100%;
+}

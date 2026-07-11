@@ -1,0 +1,35 @@
+/* legal.css */
+
+.legal-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.legal-title {
+  font-size: 36px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.legal-card {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.legal-card h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.legal-card p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.legal-card p:last-child {
+  margin-bottom: 0;
+}

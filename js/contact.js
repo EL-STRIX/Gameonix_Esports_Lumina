@@ -7,9 +7,7 @@ $(document).ready(function() {
         // Validation is handled by HTML5 'required' attributes.
         // If we reach here, the form is valid.
         
-        const toastEl = $('#contactToast');
-        const toast = new bootstrap.Toast(toastEl[0]);
-        toast.show();
+        alert("Message Sent Successfully! We will be in touch.");
         
         // Reset the form after sending
         $('#contactForm')[0].reset();

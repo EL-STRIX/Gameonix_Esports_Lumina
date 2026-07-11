@@ -70,44 +70,41 @@ function renderFeatured(books) {
 
     let html = `
     <!-- Large Feature Card -->
-    <div class="col-md-8">
-        <div class="bg-surface rounded-xl overflow-hidden book-card-shadow d-flex flex-column flex-md-row cursor-pointer h-100" onclick="window.location.href='${pagesPath}book-details.html?id=${largeBook.id}'">
-            <div class="w-100 w-md-50 aspect-1-1-2">
-                <img class="w-100 h-100 object-cover" src="${rootPrefix}${largeBook.coverImage}" alt="${largeBook.title}"/>
-            </div>
-            <div class="w-100 w-md-50 p-4 d-flex flex-column justify-content-center bg-surface">
-                <span class="d-inline-flex px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm rounded-pill mb-3 w-auto">Editor's Choice</span>
-                <h3 class="font-headline-sm text-on-background mb-2">${largeBook.title}</h3>
-                <p class="font-label-md text-on-surface-variant mb-3">by ${largeBook.author}</p>
-                <p class="font-body-md text-on-surface-variant line-clamp-3 mb-3">${largeBook.summary}</p>
-                <button class="btn bg-secondary-fixed text-primary font-label-md rounded-pill px-4 py-2 hover-bg-primary-container w-auto">Read Extract</button>
-            </div>
+    <div class="featured-large-card" onclick="window.location.href='${pagesPath}book-details.html?id=${largeBook.id}'" style="cursor: pointer;">
+        <div class="featured-large-image">
+            <img class="book-cover" src="${rootPrefix}${largeBook.coverImage}" alt="${largeBook.title}"/>
+        </div>
+        <div class="featured-large-content">
+            <div class="badge">Editor's Choice</div>
+            <h3 style="font-size: 20px; margin-bottom: 8px;">${largeBook.title}</h3>
+            <p style="color: var(--text-muted); margin-bottom: 16px;">by ${largeBook.author}</p>
+            <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 14px;">${largeBook.summary}</p>
+            <button class="btn btn-outline" style="align-self: flex-start;">Read Extract</button>
         </div>
     </div>
     
     <!-- Small Feature Cards Grid -->
-    <div class="col-md-4">
-        <div class="d-flex flex-column gap-4 h-100">
+    <div class="featured-small-grid">
     `;
 
     smallBooks.forEach(b => {
         html += `
-        <div class="bg-surface rounded-xl p-3 book-card-shadow d-flex align-items-center gap-3 cursor-pointer flex-grow-1" onclick="window.location.href='${pagesPath}book-details.html?id=${b.id}'">
-            <div class="aspect-1-1-5 rounded-lg overflow-hidden flex-shrink-0" style="width: 72px;">
-                <img class="w-100 h-100 object-cover" src="${rootPrefix}${b.coverImage}" alt="${b.title}"/>
+        <div class="featured-small-card" onclick="window.location.href='${pagesPath}book-details.html?id=${b.id}'" style="cursor: pointer;">
+            <div class="featured-small-image">
+                <img class="book-cover" src="${rootPrefix}${b.coverImage}" alt="${b.title}"/>
             </div>
-            <div class="d-flex flex-column justify-content-center">
-                <h4 class="font-label-md fw-bold text-on-background line-clamp-2 m-0 mb-1">${b.title}</h4>
-                <p class="font-label-sm text-on-surface-variant m-0 mb-2">by ${b.author}</p>
-                <div class="d-flex align-items-center text-primary font-label-sm">
-                    <span class="material-symbols-outlined me-1 icon-16 icon-fill-1">star</span> ${b.rating}
+            <div>
+                <h4 style="font-size: 16px; margin-bottom: 4px;">${b.title}</h4>
+                <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">by ${b.author}</p>
+                <div style="font-size: 12px; font-weight: 500; color: var(--primary); display: flex; align-items: center; gap: 4px;">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">star</span> ${b.rating}
                 </div>
             </div>
         </div>
         `;
     });
 
-    html += `</div></div>`;
+    html += `</div>`;
     $('#featuredGrid').html(html);
 }
 
@@ -116,29 +113,27 @@ function renderCatalog(books) {
     container.empty();
     
     books.forEach(b => {
-        let badge = b.bestseller ? '<div class="position-absolute top-0 start-0 m-2 bg-secondary-container text-on-secondary-container px-2 py-1 rounded font-label-sm text-uppercase">Bestseller</div>' : '';
+        let badge = b.bestseller ? '<div class="book-badge">Bestseller</div>' : '';
         if (b.featured && !b.bestseller) {
-            badge = '<div class="position-absolute top-0 start-0 m-2 bg-primary text-on-primary px-2 py-1 rounded font-label-sm text-uppercase">Featured</div>';
+            badge = '<div class="book-badge" style="background: var(--primary); color: white;">Featured</div>';
         }
         
         const html = `
-        <div class="col">
-            <article class="bg-surface rounded-lg shadow-level-1 card-hover-lift d-flex flex-column h-100 overflow-hidden border border-surface-variant cursor-pointer" onclick="window.location.href='${pagesPath}book-details.html?id=${b.id}'">
-                <div class="position-relative w-100 bg-surface-container-low pt-150">
-                    <img class="position-absolute top-0 start-0 w-100 h-100 object-cover" src="${rootPrefix}${b.coverImage}" alt="${b.title}"/>
-                    ${badge}
+        <article class="book-card" onclick="window.location.href='${pagesPath}book-details.html?id=${b.id}'">
+            <div class="book-cover-container">
+                <img class="book-cover" src="${rootPrefix}${b.coverImage}" alt="${b.title}"/>
+                ${badge}
+            </div>
+            <div class="book-info">
+                <h3 class="book-title">${b.title}</h3>
+                <p class="book-author">${b.author}</p>
+                <div class="book-rating">
+                    <span class="material-symbols-outlined" style="color: var(--primary); font-size: 16px;">star</span>
+                    <span>${b.rating}</span>
+                    <span style="color: var(--text-muted); margin-left: 4px; font-size: 12px;">(${Math.floor(Math.random()*200) + 10})</span>
                 </div>
-                <div class="p-3 d-flex flex-column flex-grow-1">
-                    <h3 class="font-headline-sm text-on-background mb-1 line-clamp-2">${b.title}</h3>
-                    <p class="font-body-md text-on-surface-variant mb-3">${b.author}</p>
-                    <div class="d-flex align-items-center gap-1 mt-auto">
-                        <span class="material-symbols-outlined text-surface-tint icon-16 icon-fill-1">star</span>
-                        <span class="font-label-sm text-on-background">${b.rating}</span>
-                        <span class="font-label-sm text-outline ms-1">(${Math.floor(Math.random()*200) + 10})</span>
-                    </div>
-                </div>
-            </article>
-        </div>
+            </div>
+        </article>
         `;
         container.append(html);
     });

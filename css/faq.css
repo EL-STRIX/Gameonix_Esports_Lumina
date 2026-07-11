@@ -1,0 +1,67 @@
+/* faq.css */
+
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.faq-title {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+
+.faq-desc {
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background-color: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.faq-item summary {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none; /* Hide default arrow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "expand_more";
+  font-family: "Material Symbols Outlined";
+  font-size: 24px;
+  color: var(--primary);
+  transition: transform 0.2s;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 20px 20px 20px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

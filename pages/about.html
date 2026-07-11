@@ -6,76 +6,92 @@
     <title>About - LuminaBooks</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/global.css" rel="stylesheet">
+    <link href="../css/shared.css" rel="stylesheet">
+    <link href="../css/about.css" rel="stylesheet">
 </head>
-<body class="bg-background text-on-surface font-body-md d-flex flex-column min-vh-100 pt-navbar">
+<body>
     
     <!-- TopNavBar -->
-    <nav class="fixed-top w-100 bg-surface border-bottom border-surface-variant h-navbar">
-        <div class="d-flex justify-content-between align-items-center h-100 px-gutter max-w-container-max mx-auto">
-            <a href="../index.html" class="font-headline-md text-primary fw-bold text-decoration-none">
-                LuminaBooks
-            </a>
-            <div class="d-none d-md-flex align-items-center gap-4">
-                <a href="../index.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Home</a>
-                <a href="books.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Books</a>
-                <a href="premium.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Premium</a>
-                <a href="about.html" class="font-label-md text-primary fw-bold text-decoration-none border-bottom border-primary border-2 pb-1">About</a>
-                <a href="contact.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">Contact</a>
-                <a href="faq.html" class="font-label-md text-on-surface-variant hover-text-primary text-decoration-none">FAQ</a>
+    <nav class="nav-bar">
+        <div class="container nav-container">
+            <a href="../index.html" class="nav-brand">LuminaBooks</a>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="books.html">Books</a>
+                <a href="premium.html">Premium</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="faq.html">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" placeholder="Search books...">
+                </div>
+                <button class="btn btn-outline">Sign In</button>
+                <button class="btn btn-primary">Get Started</button>
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow-1 max-w-container-max mx-auto w-100 px-margin-mobile px-md-4 py-5">
+    <main class="container" style="padding-top: 100px;">
         
-        <section class="mb-section-padding text-center max-w-container-max mx-auto" style="max-width: 800px;">
-            <h1 class="font-display-lg text-on-background mb-4">A Sanctuary for the Mind</h1>
-            <p class="font-body-lg text-on-surface-variant mx-auto">
+        <section class="about-header">
+            <h1 class="about-title">A Sanctuary for the Mind</h1>
+            <p class="about-desc">
                 LuminaBooks was born from a simple belief: in a world of constant noise, deep reading is a radical act of self-care. We curate literary experiences designed to foster quiet reflection, intellectual growth, and profound stillness.
             </p>
         </section>
 
         <!-- Stats Bento Grid -->
-        <section class="row g-4 mb-section-padding">
-            <div class="col-md-4">
-                <div class="bg-surface-container-low p-5 rounded-xl border border-surface-variant text-center book-card-shadow h-100 d-flex flex-column justify-content-center">
-                    <h3 class="font-display-lg-mobile text-primary mb-2" id="statBooks">10</h3>
-                    <p class="font-label-md text-outline m-0 text-uppercase">Total Books</p>
-                </div>
+        <section class="stats-grid">
+            <div class="stat-card">
+                <h3 class="stat-value" id="statBooks">10</h3>
+                <p class="stat-label">Total Books</p>
             </div>
-            <div class="col-md-4">
-                <div class="bg-surface-container-low p-5 rounded-xl border border-surface-variant text-center book-card-shadow h-100 d-flex flex-column justify-content-center">
-                    <h3 class="font-display-lg-mobile text-primary mb-2" id="statAuthors">10</h3>
-                    <p class="font-label-md text-outline m-0 text-uppercase">Unique Authors</p>
-                </div>
+            <div class="stat-card">
+                <h3 class="stat-value" id="statAuthors">10</h3>
+                <p class="stat-label">Unique Authors</p>
             </div>
-            <div class="col-md-4">
-                <div class="bg-surface-container-low p-5 rounded-xl border border-surface-variant text-center book-card-shadow h-100 d-flex flex-column justify-content-center">
-                    <h3 class="font-display-lg-mobile text-primary mb-2" id="statGenres">5</h3>
-                    <p class="font-label-md text-outline m-0 text-uppercase">Book Genres</p>
-                </div>
+            <div class="stat-card">
+                <h3 class="stat-value" id="statGenres">5</h3>
+                <p class="stat-label">Book Genres</p>
             </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-secondary-container w-100 mt-auto">
-        <div class="row g-4 py-5 px-margin-mobile px-md-4 max-w-container-max mx-auto">
-            <div class="col-12 d-flex flex-column gap-3 text-center">
-                <div class="font-headline-sm fw-bold text-primary">LuminaBooks</div>
-                <p class="font-label-md text-on-secondary-container m-0">© 2024 LuminaBooks. All rights reserved.</p>
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <div class="footer-brand">LuminaBooks</div>
+                <p class="footer-text">© 2024 LuminaBooks. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Contact Us</div>
+                <div class="footer-links">
+                    <a href="mailto:hello@luminabooks.com">hello@luminabooks.com</a>
+                    <span>+1 (555) 123-4567</span>
+                    <span style="margin-top: 8px;">123 Quiet Lane, Suite 400<br>Reading City, NY 10001</span>
+                </div>
+            </div>
+            <div>
+                <div class="footer-title">Follow Us</div>
+                <div style="display: flex; gap: 16px;">
+                    <span class="material-symbols-outlined" style="cursor: pointer; color: var(--text-muted);">public</span>
+                    <span class="material-symbols-outlined" style="cursor: pointer; color: var(--text-muted);">share</span>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/about.js"></script>
 </body>
 </html>
