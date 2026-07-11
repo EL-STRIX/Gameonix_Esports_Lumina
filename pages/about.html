@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>About - LuminaBooks</title>
+    <title>About Us | LuminaBooks</title>
     
-        <link href="../css/global.css" rel="stylesheet">
+    <link href="../css/global.css" rel="stylesheet">
     <link href="../css/shared.css" rel="stylesheet">
     <link href="../css/about.css" rel="stylesheet">
 </head>
@@ -30,29 +30,42 @@
         </div>
     </nav>
 
-    <main class="container" style="padding-top: 100px;">
+    <main>
         
-        <section class="about-header">
-            <h1 class="about-title">A Sanctuary for the Mind</h1>
-            <p class="about-desc">
-                LuminaBooks was born from a simple belief: in a world of constant noise, deep reading is a radical act of self-care. We curate literary experiences designed to foster quiet reflection, intellectual growth, and profound stillness.
+        <section class="story-section">
+            <h1 class="story-title">The Lumina Story</h1>
+            <p class="story-desc">
+                What started out as a simple library project has evolved into a comprehensive digital reading ecosystem. We partner with top-tier global publishers and independent content creators to deliver seamless learning tools directly to your screen, wherever you are.
             </p>
         </section>
 
-        <!-- Stats Bento Grid -->
-        <section class="stats-grid">
-            <div class="stat-card">
-                <h3 class="stat-value" id="statBooks">10</h3>
-                <p class="stat-label">Total Books</p>
+        <!-- Features Grid -->
+        <section class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📖</div>
+                <h3 class="feature-title">Accessibility</h3>
+                <p class="feature-desc">Providing thousands of titles across diverse categories right at your fingertips.</p>
             </div>
-            <div class="stat-card">
-                <h3 class="stat-value" id="statAuthors">10</h3>
-                <p class="stat-label">Unique Authors</p>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3 class="feature-title">Continuous Learning</h3>
+                <p class="feature-desc">Empowering students and creators with dedicated reading and tracking tools.</p>
             </div>
-            <div class="stat-card">
-                <h3 class="stat-value" id="statGenres">5</h3>
-                <p class="stat-label">Book Genres</p>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Community Driven</h3>
+                <p class="feature-desc">Nurturing a healthy global reader network through reviews, exchanges, and feedback.</p>
             </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <h2 class="newsletter-title">Stay Updated With Us</h2>
+            <p class="newsletter-desc">Subscribe to our newsletter to receive weekly updates on new arrivals and author interviews.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
         </section>
 
     </main>
@@ -86,8 +99,7 @@
         </div>
     </footer>
 
-        <script src="../js/about.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/about.js"></script>
 </body>
 </html>
-
-
