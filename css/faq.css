@@ -49,9 +49,8 @@
 }
 
 .faq-item summary::after {
-  content: "expand_more";
-  font-family: "Material Symbols Outlined";
-  font-size: 24px;
+  content: "🔽";
+  font-size: 16px;
   color: var(--primary);
   transition: transform 0.2s;
 }
