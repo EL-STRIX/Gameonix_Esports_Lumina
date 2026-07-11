@@ -1,31 +1,9 @@
 // main.js - Global Logic
 
-// Ensure jQuery is loaded
-if (typeof jQuery === 'undefined') {
-    console.error('jQuery is not loaded!');
-}
-
-const GlobalApp = {
+var GlobalApp = {
     init: function() {
         this.setupPremiumUI();
         this.setupSearch();
-    },
-
-    showToast: function(title, message, isSuccess = true) {
-        $('#toastTitle').text(title);
-        $('#toastMessage').text(message);
-        
-        const toastEl = document.getElementById('globalToast');
-        toastEl.classList.remove('bg-success', 'bg-danger', 'text-white');
-        
-        if (isSuccess) {
-            toastEl.classList.add('bg-success', 'text-white');
-        } else {
-            toastEl.classList.add('bg-danger', 'text-white');
-        }
-
-        const toast = new bootstrap.Toast(toastEl);
-        toast.show();
     },
 
     isPremium: function() {
@@ -34,31 +12,39 @@ const GlobalApp = {
 
     setupPremiumUI: function() {
         if (this.isPremium()) {
-            $('#premiumNavBadge').html('<span class="badge bg-success fs-6"><span class="material-symbols-outlined align-middle fs-5 me-1">workspace_premium</span>Premium Member</span>');
+            var badgeContainer = document.getElementById('premiumNavBadge');
+            if (badgeContainer) {
+                badgeContainer.innerHTML = '<span style="background-color: var(--green); color: white; padding: 4px 8px; border-radius: 4px;"><span>💎</span>Premium Member</span>';
+            }
         }
     },
 
     setupSearch: function() {
-        $('#navSearchForm').on('submit', function(e) {
-            e.preventDefault();
-            const query = $('#navSearchInput').val().trim();
-            if (query) {
-                // Determine root based on script tag
-                let isRoot = true;
-                $('script').each(function() {
-                    if ($(this).attr('src') && $(this).attr('src').includes('../js/main.js')) {
-                        isRoot = false;
+        var form = document.getElementById('navSearchForm');
+        if (form) {
+            form.onsubmit = function(e) {
+                e.preventDefault();
+                var searchInput = document.getElementById('navSearchInput');
+                if (searchInput) {
+                    var query = searchInput.value.trim();
+                    if (query !== '') {
+                        var isRoot = true;
+                        var scripts = document.getElementsByTagName('script');
+                        for (var i = 0; i < scripts.length; i++) {
+                            if (scripts[i].getAttribute('src') && scripts[i].getAttribute('src').indexOf('../js/main.js') !== -1) {
+                                isRoot = false;
+                            }
+                        }
+                        
+                        var searchUrl = isRoot ? 'pages/books.html?q=' + encodeURIComponent(query) : 'books.html?q=' + encodeURIComponent(query);
+                        window.location.href = searchUrl;
                     }
-                });
-                
-                const searchUrl = isRoot ? `pages/books.html?q=${encodeURIComponent(query)}` : `books.html?q=${encodeURIComponent(query)}`;
-                window.location.href = searchUrl;
-            }
-        });
+                }
+            };
+        }
     }
 };
 
-$(document).ready(function() {
+window.onload = function() {
     GlobalApp.init();
-});
-
+};

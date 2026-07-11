@@ -1,52 +1,68 @@
 // checkout.js
 
-$(document).ready(function() {
+var oldOnloadCheckout = window.onload;
+window.onload = function() {
+    if (typeof oldOnloadCheckout === 'function') {
+        oldOnloadCheckout();
+    }
+
     // Modal logic
-    const modal = document.getElementById('checkoutModal');
-    const upgradeBtn = document.getElementById('upgradeBtn');
-    const closeBtn = document.querySelector('.btn-close');
+    var modal = document.getElementById('checkoutModal');
+    var upgradeBtn = document.getElementById('upgradeBtn');
+    
+    // Some pages might not have a close btn with class btn-close, they use standard buttons or x
+    var closeBtns = document.getElementsByClassName('btn-close');
+    var closeBtn = closeBtns.length > 0 ? closeBtns[0] : null;
 
-    if(upgradeBtn) {
-        upgradeBtn.addEventListener('click', () => {
+    if (upgradeBtn && modal) {
+        upgradeBtn.onclick = function() {
             modal.style.display = 'flex';
-        });
+        };
     }
 
-    if(closeBtn) {
-        closeBtn.addEventListener('click', () => {
+    if (closeBtn && modal) {
+        closeBtn.onclick = function() {
             modal.style.display = 'none';
-        });
+        };
     }
 
-    window.addEventListener('click', (e) => {
-        if (e.target == modal) {
+    window.onclick = function(e) {
+        if (e.target === modal) {
             modal.style.display = 'none';
         }
-    });
+    };
 
-    $('#checkoutForm').on('submit', function(e) {
-        e.preventDefault();
-        
-        const btn = $('#checkoutSubmitBtn');
-        const originalText = btn.html();
-        
-        btn.prop('disabled', true).html('Processing...');
-        
-        setTimeout(() => {
-            const ccNum = $('#cc-number').val().replace(/\s+/g, '');
-            if (ccNum === '0000000000000000') {
-                alert("Payment failed. Please try a different card.");
-                btn.prop('disabled', false).html(originalText);
-            } else {
-                sessionStorage.setItem('premium', 'true');
-                btn.css('background-color', 'var(--green)');
-                btn.html('Success');
-                alert("Premium Activated Successfully!");
+    var checkoutForm = document.getElementById('checkoutForm');
+    if (checkoutForm) {
+        checkoutForm.onsubmit = function(e) {
+            e.preventDefault();
+            
+            var btn = document.getElementById('checkoutSubmitBtn');
+            var originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = 'Processing...';
+            
+            setTimeout(function() {
+                var ccNumberInput = document.getElementById('cc-number');
+                var ccNum = ccNumberInput ? ccNumberInput.value.replace(/\s+/g, '') : '';
                 
-                setTimeout(() => {
-                    window.location.href = '../index.html';
-                }, 1000);
-            }
-        }, 1500);
-    });
-});
+                if (ccNum === '0000000000000000') {
+                    alert("Payment failed. Please try a different card.");
+                    btn.disabled = false;
+                    btn.innerHTML = originalText;
+                } else {
+                    sessionStorage.setItem('premium', 'true');
+                    btn.style.backgroundColor = 'var(--green)';
+                    btn.style.borderColor = 'var(--green)';
+                    btn.innerHTML = 'Success';
+                    alert("Premium Activated Successfully!");
+                    
+                    setTimeout(function() {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                }
+            }, 1500);
+        };
+    }
+};
