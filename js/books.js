@@ -44,15 +44,15 @@ function setupFilters() {
         }
     }
 
-    var filterButtonsContainer = document.getElementById('filterContainer');
-    if (filterButtonsContainer) {
-        var buttons = filterButtonsContainer.getElementsByTagName('button');
+    var genreFiltersContainer = document.querySelector('.genre-filters');
+    if (genreFiltersContainer) {
+        var buttons = genreFiltersContainer.getElementsByTagName('button');
         for (var j = 0; j < buttons.length; j++) {
             buttons[j].onclick = function() {
                 for (var k = 0; k < buttons.length; k++) {
-                    buttons[k].className = 'btn btn-outline';
+                    buttons[k].className = 'genre-btn';
                 }
-                this.className = 'btn btn-primary';
+                this.className = 'genre-btn active';
                 currentGenre = this.innerHTML || this.innerText;
                 applyFilters();
             };
