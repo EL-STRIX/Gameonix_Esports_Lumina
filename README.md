@@ -14,11 +14,6 @@ A comprehensive, client-side digital reading ecosystem providing high-quality li
 
 ---
 
-## 🖼️ Project Banner
-<!-- Placeholder for Project Banner Image: ![LuminaBooks Banner](assets/images/banner.png) -->
-*(A visual representation of the LuminaBooks platform will be placed here)*
-
----
 
 ## 📖 Project Overview
 
@@ -46,15 +41,18 @@ A comprehensive, client-side digital reading ecosystem providing high-quality li
 
 ## 📸 Screenshots
 
-<!-- Update the paths below with actual screenshot assets once available -->
 * **Home Page**: The main landing experience.  
-  `![Home Page](assets/images/screenshots/home.png)`
+  ![Home Page](assets/images/screenshots/home.png)
 * **Catalog Grid**: The dynamic book browsing interface.  
-  `![Catalog Grid](assets/images/screenshots/catalog.png)`
+  ![Catalog Grid](assets/images/screenshots/book-list.png)
 * **Book Details**: Individual book profiles.  
-  `![Book Details](assets/images/screenshots/details.png)`
-* **Premium Checkout**: The subscription acquisition flow.  
-  `![Checkout](assets/images/screenshots/checkout.png)`
+  ![Book Details](assets/images/screenshots/book-details.png)
+* **Premium Page**: The premium feature showcase.  
+  ![Premium Page](assets/images/screenshots/premium.png)
+* **About Page**: The Lumina story and mission.  
+  ![About Page](assets/images/screenshots/about.png)
+* **FAQ Page**: Frequently asked questions.  
+  ![FAQ Page](assets/images/screenshots/faq.png)
 
 ---
 
